@@ -1,0 +1,36 @@
+/* =====================================================
+   GALERÍA
+   ===================================================== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.gallery-grid img {
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-light);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

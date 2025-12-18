@@ -1,0 +1,507 @@
+/* =====================================================
+   SECCIONES GENERALES
+   ===================================================== */
+
+.section-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-content p {
+  margin-bottom: var(--space-md);
+}
+
+.icon-box {
+  margin-bottom: var(--space-md);
+}
+
+.icon-box img {
+  width: 48px;
+  margin: 0 auto var(--space-sm);
+}
+
+/* =====================================================
+   SISTEMA DE SECCIÓN ENMARCADA (BASE)
+   ===================================================== */
+
+.section--framed {
+  background-color: var(--bg-soft);
+  padding: 0; /* SIEMPRE 0: el marco toca el viewport */
+}
+
+.frame-box {
+  width: 100%;               
+  box-sizing: border-box;
+
+  background-color: #ffffff;
+
+  border: 20px solid var(--color-primary); /* MÁS GRUESO */
+  padding: 3.5rem 1.8rem;
+}
+
+
+/* =====================================================
+   PRESENTACIÓN (USA EL SISTEMA ENMARCADO)
+   ===================================================== */
+
+.section--presentation {
+  padding: 0;
+}
+
+.presentation-content {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.presentation-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.presentation-parents {
+  margin-bottom: 2.2rem;
+}
+
+.parents-names {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.parents-note {
+  font-family: var(--font-base);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.presentation-text {
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 3rem 0 2.5rem;
+}
+
+.presentation-icon {
+  width: 42px;
+}
+
+/* =====================================================
+   SECCIÓN CON FLORES DECORATIVAS
+   ===================================================== */
+.section--flowers {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Variantes de fondo */
+.section--flowers.section--white {
+  background-color: #ffffff;
+}
+
+.section--flowers.section--soft {
+  background-color: var(--bg-soft);
+}
+
+/* Flores decorativas */
+.section--flowers::before,
+.section--flowers::after {
+  content: '';
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Flor superior izquierda */
+.section--flowers::before {
+  top: -32px;
+  left: -32px;
+  background-image: url('../img/flor-izquierda.svg');
+  background-position: top left;
+}
+
+/* Flor inferior derecha */
+.section--flowers::after {
+  bottom: -32px;
+  right: -32px;
+  background-image: url('../img/flor-derecha.svg');
+  background-position: bottom right;
+}
+
+/* Contenido siempre encima */
+.section--flowers .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================================
+   UBICACIÓN / LUGAR
+   ===================================================== */
+
+
+.location-box{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.8rem 2.6rem;
+
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Fecha */
+.location-date{
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.location-date span{
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Grid */
+.location-grid{
+  display: grid;
+  gap: 3rem;
+}
+
+/* Card */
+.location-card{
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.location-card img{
+  width: 100%;
+  height: 220px;              /* tamaño fijo */
+  object-fit: cover;          /* recorte elegante */
+  border-radius: var(--radius-md);
+  margin-bottom: 1.4rem;
+}
+
+/* =====================================================
+   UBICACIÓN – TIPOGRAFÍA CONSISTENTE
+   ===================================================== */
+
+#location{
+  font-family: var(--font-base);
+}
+
+/* Título principal */
+.location-title{
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.4rem;
+  margin-top: 3rem;
+}
+
+/* Subtítulo */
+.location-subtitle{
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2.2rem;
+}
+
+/* Fecha */
+.location-date{
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+/* Cards */
+.location-card-title{
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+}
+
+.location-time{
+  font-family: var(--font-base);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.location-place{
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+}
+
+.location-address{
+  font-family: var(--font-base);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Desktop */
+@media (min-width: 768px){
+  .location-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  .location-box{
+    padding: 3.2rem 3.8rem;
+  }
+}
+
+
+/* =====================================================
+   PROGRAMA / ITINERARIO
+   ===================================================== */
+
+.timeline-title{
+  text-align:center;
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  margin: 0 0 4rem;
+}
+
+.timeline-vertical{
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Línea central */
+.timeline-vertical::before{
+  content:"";
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--color-primary);
+  opacity: .55;
+  transform: translateX(-50%);
+}
+
+
+/* Centro: punto siempre clavado al centro */
+.timeline-center{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position: relative;
+  z-index: 2;
+}
+.timeline-point{
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 50%;
+    position: relative;
+  z-index: 3;
+}
+
+/* Lados */
+.timeline-side{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 44px;
+    position: relative;
+  z-index: 2;
+}
+
+/* Icono */
+.timeline-icon{
+  width: 82px;
+  height: auto;
+  opacity: .9;
+}
+
+/* Texto */
+.timeline-text{
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.35;
+  text-align: left;
+}
+.timeline-text .time{
+  display:block;
+  font-size: .78rem;
+  color: var(--text-secondary);
+  margin-bottom: .2rem;
+}
+
+/* Alternancia (flip) */
+.timeline-row.is-flip .timeline-side--left{
+  justify-content: flex-end;
+}
+.timeline-row.is-flip .timeline-side--right{
+  justify-content: flex-start;
+}
+.timeline-row.is-flip .timeline-text{
+  text-align: right;
+}
+
+/* Default (no flip): icono izquierda, texto derecha */
+.timeline-side--left{ justify-content: flex-end; }
+.timeline-side--right{ justify-content: flex-start; }
+
+/* =========================
+   ANIMACIÓN TIMELINE
+   ========================= */
+
+
+/* Estado activo: línea visible */
+.timeline-vertical.is-active::after{
+  height: 100%;
+}
+
+/* Items ocultos */
+.timeline-row{
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: center;
+  margin: 3.5rem 0;
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.timeline-row.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Línea animada */
+.timeline-line{
+  position:absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: var(--color-primary);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  transition: transform 0.15s linear;
+  z-index: 0; /* ✅ debajo del contenido */
+}
+
+/* =====================================================
+   REGALOS
+   ===================================================== */
+.gifts-box{
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 2.2rem 2rem;
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  border-radius: 24px; /* más orgánico */
+  box-shadow: 0 20px 60px rgba(122,102,163,0.12);
+}
+
+.gifts-box::before{
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  background-image: url("../img/flor-mini.svg"); /* una flor simple */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: .85;
+}
+
+/* Texto principal */
+.gifts-text{
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Opciones */
+.gifts-options{
+  display: grid;
+  gap: 1.6rem;
+}
+
+/* Card individual */
+.gift-item{
+  padding: 1.2rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: transform .25s ease, box-shadow .25s ease;
+  color: var(--color-primary);
+}
+
+.gift-item:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Icono */
+.gift-icon{
+  width: 44px;
+  height: 44px;
+  margin-bottom: .6rem;
+  opacity: 1;
+}
+
+
+/* Título */
+.gift-title{
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  margin-bottom: .25rem;
+  color: var(--text-primary);
+}
+
+/* Descripción */
+.gift-desc{
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Desktop */
+@media (min-width: 768px){
+  .gifts-options{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+
+  .gifts-box{
+    padding: 2.8rem 3rem;
+  }
+}
+

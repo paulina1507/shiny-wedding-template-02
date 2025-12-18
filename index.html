@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gio & Sam | Nuestra Boda</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/hero.css" />
+    <link rel="stylesheet" href="assets/css/sections.css" />
+    <link rel="stylesheet" href="assets/css/gallery.css" />
+    <link rel="stylesheet" href="assets/css/rsvp.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+       HEADER
+       ========================= -->
+    <header class="header" id="header">
+      <div class="header-container">
+        <nav class="nav nav-left">
+          <a href="#hero">Inicio</a>
+          <a href="#presentation">Presentación</a>
+          <a href="#location">Lugar</a>
+          <a href="#timeline">Programa</a>
+        </nav>
+
+        <div class="header-logo">
+          <a href="#hero">Gio & Sam</a>
+        </div>
+
+        <nav class="nav nav-right">
+          <a href="#gifts">Regalos</a>
+          <a href="#dresscode">Vestimenta</a>
+          <a href="#gallery">Galería</a>
+          <a href="#rsvp">Asistencia</a>
+        </nav>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          ☰
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="menuClose" aria-label="Cerrar menú">
+          ✕
+        </button>
+
+        <a href="#hero">Inicio</a>
+        <a href="#presentation">Presentación</a>
+        <a href="#location">Lugar</a>
+        <a href="#timeline">Programa</a>
+        <a href="#gifts">Regalos</a>
+        <a href="#dresscode">Vestimenta</a>
+        <a href="#gallery">Galería</a>
+        <a href="#rsvp">Asistencia</a>
+      </div>
+    </header>
+
+    <!-- =========================
+       HERO
+       ========================= -->
+    <section id="hero" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <span class="hero-pretitle">Nuestra boda</span>
+
+        <h1 class="hero-names">Gio <span>&</span> Sam</h1>
+
+        <div class="hero-divider"></div>
+
+        <div id="countdownTimer" class="hero-countdown"></div>
+      </div>
+
+      <div class="hero-scroll">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- =========================
+     LUGAR
+     ========================= -->
+    <section id="location" class="section section--flowers section--soft">
+      <div class="container text-center">
+        <h2 class="location-title">Nuestra celebración</h2>
+        <p class="location-subtitle">Fecha y ubicación</p>
+
+        <div class="location-box">
+          <p class="location-date">
+            20 · Diciembre · 2024<br />
+            <span>Monclova, Coah.</span>
+          </p>
+
+          <div class="location-grid">
+            <!-- Ceremonia -->
+            <div class="location-card">
+              <h3 class="location-card-title">Ceremonia</h3>
+              <p class="location-time">17:00 Hrs.</p>
+
+              <img src="/assets/img/ceremonia.png" alt="Ceremonia" />
+
+              <p class="location-place">Jardín del Lienzo Charro de la Villa</p>
+
+              <p class="location-address">
+                Jardín SN, Guadalupe, 25750<br />
+                Monclova, Coah.
+              </p>
+
+              <a href="#" class="btn btn-primary">Ver mapa</a>
+            </div>
+
+            <!-- Recepción -->
+            <div class="location-card">
+              <h3 class="location-card-title">Recepción</h3>
+              <p class="location-time">19:00 Hrs.</p>
+
+              <img src="/assets/img/recepcion.png" alt="Recepción" />
+
+              <p class="location-place">Aurum Eventos</p>
+
+              <p class="location-address">
+                Cuauhtémoc 1400, Cd Deportiva<br />
+                Monclova, Coah.
+              </p>
+
+              <a href="#" class="btn btn-primary">Ver mapa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       PROGRAMA
+       ========================= -->
+    <section id="timeline" class="section section--framed">
+      <div class="frame-box">
+        <h2 class="timeline-title">Itinerario</h2>
+
+        <div class="timeline-vertical">
+          <div class="timeline-line"></div>
+          <div class="timeline-row">
+            <div class="timeline-side timeline-side--left">
+              <img class="timeline-icon" src="/assets/img/3.svg" alt="" />
+            </div>
+
+            <div class="timeline-center">
+              <span class="timeline-point"></span>
+            </div>
+
+            <div class="timeline-side timeline-side--right">
+              <div class="timeline-text">
+                <span class="time">18:00 hrs.</span>
+                Ceremonia
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-row is-flip">
+            <div class="timeline-side timeline-side--left">
+              <div class="timeline-text">
+                <span class="time">19:00 hrs.</span>
+                Boda civil
+              </div>
+            </div>
+
+            <div class="timeline-center">
+              <span class="timeline-point"></span>
+            </div>
+
+            <div class="timeline-side timeline-side--right">
+              <img class="timeline-icon" src="./assets/img/4.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-side timeline-side--left">
+              <img class="timeline-icon" src="./assets/img/6.svg" alt="" />
+            </div>
+
+            <div class="timeline-center">
+              <span class="timeline-point"></span>
+            </div>
+
+            <div class="timeline-side timeline-side--right">
+              <div class="timeline-text">
+                <span class="time">20:30 hrs.</span>
+                Recepción
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-row is-flip">
+            <div class="timeline-side timeline-side--left">
+              <div class="timeline-text">
+                <span class="time">20:30 hrs.</span>
+                Cena
+              </div>
+            </div>
+
+            <div class="timeline-center">
+              <span class="timeline-point"></span>
+            </div>
+
+            <div class="timeline-side timeline-side--right">
+              <img class="timeline-icon" src="./assets/img/7.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-side timeline-side--left">
+              <img class="timeline-icon" src="./assets/img/8.svg" alt="" />
+            </div>
+
+            <div class="timeline-center">
+              <span class="timeline-point"></span>
+            </div>
+
+            <div class="timeline-side timeline-side--right">
+              <div class="timeline-text">
+                <span class="time">21:30 hrs.</span>
+                Todo mundo a bailar
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+     REGALOS
+     ========================= -->
+    <section id="gifts" class="section section--flowers section--soft">
+      <div class="container text-center">
+        <h2 class="section-title">Regalos</h2>
+        <div class="divider"></div>
+
+        <div class="gifts-box">
+          <p class="gifts-text">
+            Tu presencia es nuestro mejor regalo.<br />
+            Si deseas hacernos un obsequio, aquí te dejamos algunas opciones.
+          </p>
+
+          <div class="gifts-options">
+            <div class="gift-item">
+              <img src="/assets/img/10.svg" alt="" class="gift-icon" />
+              <h4 class="gift-title">Lluvia de sobres</h4>
+              <p class="gift-desc">Un detalle lleno de buenos deseos.</p>
+            </div>
+
+            <div class="gift-item">
+              <img src="/assets/img/12.svg" alt="" class="gift-icon" />
+              <h4 class="gift-title">Transferencia bancaria</h4>
+              <p class="gift-desc">Para quienes prefieran esta opción.</p>
+            </div>
+
+            <div class="gift-item">
+              <img src="/assets/img/11.svg" alt="" class="gift-icon" />
+              <h4 class="gift-title">Mesa de regalos</h4>
+              <p class="gift-desc">Próximamente disponible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       VESTIMENTA
+       ========================= -->
+    <section id="dresscode" class="section">
+      <div class="container text-center">
+        <h2 class="section-title">Código de Vestimenta</h2>
+        <div class="divider"></div>
+
+        <p>Formal</p>
+      </div>
+    </section>
+
+    <!-- =========================
+       GALERÍA
+       ========================= -->
+    <section id="gallery" class="section section--accent">
+      <div class="container">
+        <h2 class="section-title text-center">Galería</h2>
+        <div class="divider"></div>
+
+        <div class="gallery-grid">
+          <img src="./assets/img/gallery1.png" alt="" />
+          <img src="./assets/img/gallery2.png" alt="" />
+          <img src="./assets/img/gallery3.png" alt="" />
+          <img src="./assets/img/gallery4.png" alt="" />
+          <img src="./assets/img/gallery5.png" alt="" />
+          <img src="./assets/img/gallery6.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       RSVP
+       ========================= -->
+    <section id="rsvp" class="section section--soft">
+      <div class="container text-center">
+        <h2 class="section-title">Asistencia</h2>
+        <div class="divider"></div>
+
+        <form class="rsvp-form">
+          <input type="text" placeholder="Nombre completo" required />
+          <select required>
+            <option value="">¿Asistirás?</option>
+            <option>Sí asistiré</option>
+            <option>No podré asistir</option>
+          </select>
+          <textarea placeholder="Mensaje (opcional)"></textarea>
+
+          <button type="submit" class="btn btn-primary">
+            Confirmar asistencia
+          </button>
+        </form>
+
+        <div class="rsvp-success hidden">¡Gracias por confirmar!</div>
+      </div>
+    </section>
+
+    <!-- =========================
+       FOOTER
+       ========================= -->
+    <footer class="footer">
+      <div class="container text-center">
+        <p>Gio & Sam</p>
+        <small>Diseñado con amor por Shiny Maker Events</small>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/gallery.js"></script>
+    <script src="assets/js/rsvp.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer {
+  padding: var(--space-md) var(--space-sm);
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--line-soft);
+}
+
+.footer p {
+  font-family: var(--font-script);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: 0.4rem;
+}
+
+.footer small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

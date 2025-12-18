@@ -1,0 +1,158 @@
+/* =====================================================
+   SHINY WEDDING – PLANTILLA 02
+   Base styles (reset + comportamiento global)
+   ===================================================== */
+
+/* =========================
+   BODY
+   ========================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-base);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* =========================
+   LINKS
+   ========================= */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* =========================
+   HEADINGS
+   ========================= */
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+/* =========================
+   PÁRRAFOS
+   ========================= */
+p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* =========================
+   SECCIONES
+   ========================= */
+.section {
+  padding: var(--space-xl) var(--space-sm);
+  position: relative;
+}
+
+.section--soft {
+  background-color: var(--bg-soft);
+}
+
+.section--accent {
+  background-color: var(--bg-section);
+}
+
+/* =========================
+   CONTENEDOR
+   ========================= */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* =========================
+   TÍTULOS DE SECCIÓN
+   ========================= */
+.section-title {
+  font-family: var(--font-script);
+  font-size: 3rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+/* =========================
+   SUBTÍTULO OPCIONAL
+   ========================= */
+.section-subtitle {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-base);
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+}
+
+/* =========================
+   DIVIDER DECORATIVO
+   ========================= */
+.divider {
+  width: 80px;
+  height: 1px;
+  background-color: var(--line-soft);
+  margin: var(--space-md) auto;
+}
+
+/* =========================
+   UTILIDADES
+   ========================= */
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
