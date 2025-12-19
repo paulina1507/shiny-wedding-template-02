@@ -280,32 +280,71 @@
     </section>
 
     <!-- =========================
-       VESTIMENTA
-       ========================= -->
-    <section id="dresscode" class="section">
-      <div class="container text-center">
-        <h2 class="section-title">Código de Vestimenta</h2>
-        <div class="divider"></div>
+     CÓDIGO DE VESTIMENTA
+     ========================= -->
+    <section id="dresscode" class="section section--framed">
+      <div class="frame-box">
+        <div class="dresscode-content">
+          <h2 class="section-title">Código de Vestimenta</h2>
+          <div class="divider"></div>
 
-        <p>Formal</p>
+          <!-- Ilustración -->
+          <img
+            src="/assets/img/9.svg"
+            alt="Código de vestimenta cóctel"
+            class="dresscode-illustration"
+          />
+
+          <h3 class="dresscode-type">Cóctel</h3>
+
+          <div class="dresscode-grid">
+            <!-- Ellos -->
+            <div class="dresscode-col">
+              <h4>Ellos</h4>
+              <ul>
+                <li>Traje o saco con pantalón</li>
+                <li>Camisa formal</li>
+                <li>Corbata o corbatín (opcional)</li>
+                <li>Zapatos formales</li>
+              </ul>
+            </div>
+
+            <!-- Ellas -->
+            <div class="dresscode-col">
+              <h4>Ellas</h4>
+              <ul>
+                <li>Vestido de cóctel</li>
+                <li>Tacones o sandalias formales</li>
+                <li>Accesorios sutiles</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="dresscode-note">
+            En nuestra boda, el <strong>dress code cóctel</strong> es el
+            principal. ¡Prepárate para brillar!
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- =========================
        GALERÍA
        ========================= -->
-    <section id="gallery" class="section section--accent">
+    <section id="gallery" class="section section--flowers section--soft">
       <div class="container">
         <h2 class="section-title text-center">Galería</h2>
         <div class="divider"></div>
 
-        <div class="gallery-grid">
-          <img src="./assets/img/gallery1.png" alt="" />
-          <img src="./assets/img/gallery2.png" alt="" />
-          <img src="./assets/img/gallery3.png" alt="" />
-          <img src="./assets/img/gallery4.png" alt="" />
-          <img src="./assets/img/gallery5.png" alt="" />
-          <img src="./assets/img/gallery6.png" alt="" />
+        <div class="gallery-box">
+          <div class="gallery-grid">
+            <img src="./assets/img/gallery1.png" alt="Galería 1" />
+            <img src="./assets/img/gallery2.png" alt="Galería 2" />
+            <img src="./assets/img/gallery3.png" alt="Galería 3" />
+            <img src="./assets/img/gallery4.png" alt="Galería 4" />
+            <img src="./assets/img/gallery5.png" alt="Galería 5" />
+            <img src="./assets/img/gallery1.png" alt="Galería 6" />
+          </div>
         </div>
       </div>
     </section>
@@ -313,28 +352,62 @@
     <!-- =========================
        RSVP
        ========================= -->
-    <section id="rsvp" class="section section--soft">
-      <div class="container text-center">
-        <h2 class="section-title">Asistencia</h2>
-        <div class="divider"></div>
 
-        <form class="rsvp-form">
-          <input type="text" placeholder="Nombre completo" required />
-          <select required>
-            <option value="">¿Asistirás?</option>
-            <option>Sí asistiré</option>
-            <option>No podré asistir</option>
-          </select>
-          <textarea placeholder="Mensaje (opcional)"></textarea>
+   <!-- =========================
+     RSVP / ASISTENCIA
+     ========================= -->
+<section id="rsvp" class="section section--framed">
+  <div class="frame-box">
 
-          <button type="submit" class="btn btn-primary">
-            Confirmar asistencia
-          </button>
-        </form>
+    <div class="rsvp-content text-center">
 
-        <div class="rsvp-success hidden">¡Gracias por confirmar!</div>
+      <h2 class="section-title">Asistencia</h2>
+      <div class="divider"></div>
+
+      <p class="rsvp-intro">
+        Para nosotros será un honor contar con tu presencia en este día tan especial.  
+        Agradecemos confirmar tu asistencia.
+      </p>
+
+      <form class="rsvp-form">
+
+        <input
+          type="text"
+          placeholder="Nombre completo"
+          required
+        />
+
+        <select required>
+          <option value="">¿Asistirás a nuestra celebración?</option>
+          <option>Sí asistiré</option>
+          <option>No podré asistir</option>
+        </select>
+
+        <textarea
+          placeholder="Mensaje o buenos deseos (opcional)"
+        ></textarea>
+
+        <button type="submit" class="btn btn-primary">
+          Confirmar asistencia
+        </button>
+
+      </form>
+
+      <p class="rsvp-note">
+        Agradecemos confirmar antes del
+        <strong>15 de noviembre de 2026</strong>.
+      </p>
+
+      <div class="rsvp-success hidden">
+        ¡Gracias por confirmar!  
+        Nos encantará compartir este día contigo.
       </div>
-    </section>
+
+    </div>
+
+  </div>
+</section>
+
 
     <!-- =========================
        FOOTER
