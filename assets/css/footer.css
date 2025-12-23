@@ -19,3 +19,8 @@
   font-size: 0.75rem;
   color: var(--text-muted);
 }
+
+.footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}

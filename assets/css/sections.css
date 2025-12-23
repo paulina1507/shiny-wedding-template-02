@@ -99,7 +99,8 @@
 
 .section--flowers {
   position: relative;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: hidden; 
 }
 
 .section--flowers .container {
@@ -645,4 +646,35 @@
   .dresscode-type{
     font-size: 1.8rem;
   }
+}
+
+/* =========================
+   BLOQUEO DEFINITIVO OVERFLOW
+   ========================= */
+body {
+  position: relative;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* bloquea solo el empuje lateral real */
+.section--flowers::before,
+.section--flowers::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  overflow-x: hidden;
+  pointer-events: none;
+}
+
+.section--framed {
+  overflow-x: hidden;
+}
+
+.header {
+  left: 0;
+  right: 0;
 }

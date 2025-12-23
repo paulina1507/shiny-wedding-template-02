@@ -390,3 +390,7 @@ p {
   }
 }
 
+.section + .footer {
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
