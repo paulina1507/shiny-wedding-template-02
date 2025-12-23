@@ -1,8 +1,9 @@
 /* =====================================================
-   MAIN JS – SHINY MAKER EVENTS (FINAL)
+   MAIN JS – SHINY MAKER EVENTS (FINAL & STABLE)
    ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+
   /* =====================================================
      INTRO – SOBRE GLOBAL
      ===================================================== */
@@ -12,23 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const seal = document.getElementById("sealButton");
 
   if (overlay && envelope && seal) {
-    // Bloquear scroll mientras el sobre está activo
     document.body.style.overflow = "hidden";
 
     seal.addEventListener("click", () => {
-      // 1. Detener latido del sello
       seal.style.animation = "none";
       seal.style.opacity = "0";
 
-      // 2. Abrir sobre
       envelope.classList.add("open");
 
-      // 3. Animación de salida del sobre
       setTimeout(() => {
         envelope.classList.add("drop-exit");
       }, 400);
 
-      // 4. Fade out del overlay y activar contenido
       setTimeout(() => {
         overlay.classList.add("fade-out");
         document.body.style.overflow = "auto";
@@ -36,15 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         revealContent();
         initFlowerObserver();
-        initFlowerParallax(); // 🌸 ACTIVAMOS PARALLAX
+        initFlowerParallax();
       }, 1400);
     });
+
   } else {
-    // Fallback si no hay sobre
     document.body.classList.add("content-ready");
     revealContent();
     initFlowerObserver();
-    initFlowerParallax(); // 🌸 ACTIVAMOS PARALLAX
+    initFlowerParallax();
   }
 
   /* =====================================================
@@ -57,40 +53,35 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     reveals.forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add("visible");
-      }, i * 120);
+      setTimeout(() => el.classList.add("visible"), i * 120);
     });
   }
 
   /* =====================================================
-     FLORES – ENTRADA POR SCROLL (VISIBILIDAD)
+     FLORES – VISIBILIDAD POR SCROLL
      ===================================================== */
 
   function initFlowerObserver() {
-    const flowerSections = document.querySelectorAll(".section--flowers");
+    const sections = document.querySelectorAll(".section--flowers");
+    if (!sections.length) return;
 
-    if (!flowerSections.length) return;
-
-    const flowerObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("flowers-visible");
-            flowerObserver.unobserve(entry.target); // solo una vez
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.25 }
     );
 
-    flowerSections.forEach((section) => {
-      flowerObserver.observe(section);
-    });
+    sections.forEach(section => observer.observe(section));
   }
 
   /* =====================================================
-     FLORES – MOVIMIENTO SEGÚN SCROLL (PARALLAX REAL)
+     FLORES – PARALLAX
      ===================================================== */
 
   function initFlowerParallax() {
@@ -100,28 +91,18 @@ document.addEventListener("DOMContentLoaded", () => {
     let ticking = false;
 
     function update() {
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const sectionHeight = rect.height;
+        const vh = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vh) return;
 
-        // Si la sección no está visible, no mover nada
-        if (rect.bottom < 0 || rect.top > viewportHeight) return;
-
-        // Progreso del scroll dentro de la sección (0 → 1)
-        const progress =
-          (viewportHeight - rect.top) / (viewportHeight + sectionHeight);
-
+        const progress = (vh - rect.top) / (vh + rect.height);
         const clamped = Math.max(0, Math.min(progress, 1));
-        const flowers = section.querySelectorAll(".flower");
 
-        flowers.forEach((flower) => {
-          const maxMove = 60; // límite en px
-          const direction = flower.classList.contains("flower--top") ? 1 : -1;
-
-          const translateY = clamped * maxMove * direction;
-
-          flower.style.transform = `translate3d(0, ${translateY}px, 0)`;
+        section.querySelectorAll(".flower").forEach(flower => {
+          const max = 60;
+          const dir = flower.classList.contains("flower--top") ? 1 : -1;
+          flower.style.transform = `translate3d(0, ${clamped * max * dir}px, 0)`;
         });
       });
 
@@ -137,24 +118,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =====================================================
-     TIMELINE – LINE + ITEMS
+     TIMELINE – SE INICIALIZA DESDE AFUERA
      ===================================================== */
 
-  const timeline = document.getElementById("timelineContainer");
-  const line = timeline?.querySelector(".timeline-line");
-  const rows = document.querySelectorAll(".timeline-row");
+  window.initTimeline = function () {
+    const timeline = document.getElementById("timelineContainer");
+    if (!timeline) return;
 
-  if (timeline && line && rows.length) {
+    const line = timeline.querySelector(".timeline-line");
+    const rows = timeline.querySelectorAll(".timeline-row");
+    if (!rows.length) return;
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             rows.forEach((row, i) => {
-              setTimeout(() => {
-                row.classList.add("is-visible");
-              }, i * 160);
+              setTimeout(() => row.classList.add("is-visible"), i * 160);
             });
-
             observer.disconnect();
           }
         });
@@ -166,14 +147,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", () => {
       const rect = timeline.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      const start = window.innerHeight * 0.7;
 
-      const start = windowHeight * 0.7;
       let progress = (start - rect.top) / rect.height;
-
       progress = Math.max(0, Math.min(progress, 1));
 
-      line.style.transform = `translateX(-50%) scaleY(${progress})`;
+      if (line) {
+        line.style.transform = `translateX(-50%) scaleY(${progress})`;
+      }
     });
-  }
+  };
+
 });
