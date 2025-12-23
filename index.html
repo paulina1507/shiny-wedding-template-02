@@ -71,8 +71,8 @@
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <span class="hero-pretitle">Nuestra boda</span>
-        <h1 class="hero-names">Gio <span>&</span> Sam</h1>
+        <span class="hero-pretitle" id="heroPretitle"></span>
+        <h1 class="hero-names" id="heroNames"></h1>
         <div class="hero-divider"></div>
         <div id="countdownTimer" class="hero-countdown"></div>
       </div>
@@ -87,43 +87,14 @@
       <div class="flower flower--bottom"></div>
 
       <div class="container text-center">
-        <h2 class="location-title">Nuestra celebración</h2>
-        <p class="location-subtitle">Fecha y ubicación</p>
+        <h2 class="location-title" id="locationTitle"></h2>
+        <p class="location-subtitle" id="locationSubtitle"></p>
 
         <div class="location-box">
-          <p class="location-date">
-            20 · Diciembre · 2024<br />
-            <span>Monclova, Coah.</span>
-          </p>
+          <p class="location-date" id="locationDate"></p>
 
-          <div class="location-grid">
-            <div class="location-card">
-              <h3 class="location-card-title">Ceremonia</h3>
-              <p class="location-time">17:00 Hrs.</p>
-              <img src="/assets/img/ceremonia.png" alt="Ceremonia" />
-              <p class="location-place">Jardín del Lienzo Charro de la Villa</p>
-              <p class="location-address">
-                Jardín SN, Guadalupe, 25750<br />
-                Monclova, Coah.
-              </p>
-              <a href="https://www.google.com.mx/maps" class="btn btn-primary"
-                >Ver mapa</a
-              >
-            </div>
-
-            <div class="location-card">
-              <h3 class="location-card-title">Recepción</h3>
-              <p class="location-time">19:00 Hrs.</p>
-              <img src="/assets/img/recepcion.png" alt="Recepción" />
-              <p class="location-place">Aurum Eventos</p>
-              <p class="location-address">
-                Cuauhtémoc 1400, Cd Deportiva<br />
-                Monclova, Coah.
-              </p>
-              <a href="https://www.google.com.mx/maps" class="btn btn-primary"
-                >Ver mapa</a
-              >
-            </div>
+          <div class="location-grid" id="locationGrid">
+            <!-- cards inyectadas por JS -->
           </div>
         </div>
       </div>
@@ -134,94 +105,11 @@
        ========================= -->
     <section id="timeline" class="section section--framed">
       <div class="frame-box">
-        <h2 class="timeline-title">Itinerario</h2>
+        <h2 class="timeline-title" id="timelineTitle">Itinerario</h2>
 
-        <div class="timeline-vertical">
+        <div class="timeline-vertical" id="timelineContainer">
           <div class="timeline-line"></div>
-          <div class="timeline-row">
-            <div class="timeline-side timeline-side--left">
-              <img class="timeline-icon" src="/assets/img/3.svg" alt="" />
-            </div>
-
-            <div class="timeline-center">
-              <span class="timeline-point"></span>
-            </div>
-
-            <div class="timeline-side timeline-side--right">
-              <div class="timeline-text">
-                <span class="time">18:00 hrs.</span>
-                Ceremonia
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-row is-flip">
-            <div class="timeline-side timeline-side--left">
-              <div class="timeline-text">
-                <span class="time">19:00 hrs.</span>
-                Boda civil
-              </div>
-            </div>
-
-            <div class="timeline-center">
-              <span class="timeline-point"></span>
-            </div>
-
-            <div class="timeline-side timeline-side--right">
-              <img class="timeline-icon" src="./assets/img/4.svg" alt="" />
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="timeline-side timeline-side--left">
-              <img class="timeline-icon" src="./assets/img/6.svg" alt="" />
-            </div>
-
-            <div class="timeline-center">
-              <span class="timeline-point"></span>
-            </div>
-
-            <div class="timeline-side timeline-side--right">
-              <div class="timeline-text">
-                <span class="time">20:30 hrs.</span>
-                Recepción
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-row is-flip">
-            <div class="timeline-side timeline-side--left">
-              <div class="timeline-text">
-                <span class="time">20:30 hrs.</span>
-                Cena
-              </div>
-            </div>
-
-            <div class="timeline-center">
-              <span class="timeline-point"></span>
-            </div>
-
-            <div class="timeline-side timeline-side--right">
-              <img class="timeline-icon" src="./assets/img/7.svg" alt="" />
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="timeline-side timeline-side--left">
-              <img class="timeline-icon" src="./assets/img/8.svg" alt="" />
-            </div>
-
-            <div class="timeline-center">
-              <span class="timeline-point"></span>
-            </div>
-
-            <div class="timeline-side timeline-side--right">
-              <div class="timeline-text">
-                <span class="time">21:30 hrs.</span>
-                Todo mundo a bailar
-              </div>
-            </div>
-          </div>
+          <!-- rows inyectados por JS -->
         </div>
       </div>
     </section>
@@ -233,33 +121,14 @@
       <div class="flower flower--bottom"></div>
 
       <div class="container text-center">
-        <h2 class="section-title">Regalos</h2>
+        <h2 class="section-title" id="giftsTitle">Regalos</h2>
         <div class="divider"></div>
 
         <div class="gifts-box">
-          <p class="gifts-text">
-            Tu presencia es nuestro mejor regalo.<br />
-            Si deseas hacernos un obsequio, aquí te dejamos algunas opciones.
-          </p>
+          <p class="gifts-text" id="giftsText"></p>
 
-          <div class="gifts-options">
-            <div class="gift-item">
-              <img src="/assets/img/10.svg" alt="" class="gift-icon" />
-              <h4 class="gift-title">Lluvia de sobres</h4>
-              <p class="gift-desc">Un detalle lleno de buenos deseos.</p>
-            </div>
-
-            <div class="gift-item">
-              <img src="/assets/img/12.svg" alt="" class="gift-icon" />
-              <h4 class="gift-title">Transferencia bancaria</h4>
-              <p class="gift-desc">Para quienes prefieran esta opción.</p>
-            </div>
-
-            <div class="gift-item">
-              <img src="/assets/img/11.svg" alt="" class="gift-icon" />
-              <h4 class="gift-title">Mesa de regalos</h4>
-              <p class="gift-desc">Próximamente disponible.</p>
-            </div>
+          <div class="gifts-options" id="giftsOptions">
+            <!-- gift items por JSON -->
           </div>
         </div>
       </div>
@@ -271,45 +140,28 @@
     <section id="dresscode" class="section section--framed">
       <div class="frame-box">
         <div class="dresscode-content">
-          <h2 class="section-title">Código de Vestimenta</h2>
+          <h2 class="section-title" id="dresscodeTitle">
+            Código de Vestimenta
+          </h2>
           <div class="divider"></div>
 
-          <!-- Ilustración -->
-          <img
-            src="/assets/img/9.svg"
-            alt="Código de vestimenta cóctel"
-            class="dresscode-illustration"
-          />
+          <img id="dresscodeImage" class="dresscode-illustration" alt="" />
 
-          <h3 class="dresscode-type">Cóctel</h3>
+          <h3 class="dresscode-type" id="dresscodeType"></h3>
 
           <div class="dresscode-grid">
-            <!-- Ellos -->
             <div class="dresscode-col">
               <h4>Ellos</h4>
-              <ul>
-                <li>Traje o saco con pantalón</li>
-                <li>Camisa formal</li>
-                <li>Corbata o corbatín (opcional)</li>
-                <li>Zapatos formales</li>
-              </ul>
+              <ul id="dresscodeMen"></ul>
             </div>
 
-            <!-- Ellas -->
             <div class="dresscode-col">
               <h4>Ellas</h4>
-              <ul>
-                <li>Vestido de cóctel</li>
-                <li>Tacones o sandalias formales</li>
-                <li>Accesorios sutiles</li>
-              </ul>
+              <ul id="dresscodeWomen"></ul>
             </div>
           </div>
 
-          <p class="dresscode-note">
-            En nuestra boda, el <strong>dress code cóctel</strong> es el
-            principal. ¡Prepárate para brillar!
-          </p>
+          <p class="dresscode-note" id="dresscodeNote"></p>
         </div>
       </div>
     </section>
@@ -321,17 +173,12 @@
       <div class="flower flower--bottom"></div>
 
       <div class="container">
-        <h2 class="section-title text-center">Galería</h2>
+        <h2 class="section-title text-center" id="galleryTitle">Galería</h2>
         <div class="divider"></div>
 
         <div class="gallery-box">
-          <div class="gallery-grid">
-            <img src="./assets/img/gallery1.png" alt="" />
-            <img src="./assets/img/gallery2.png" alt="" />
-            <img src="./assets/img/gallery3.png" alt="" />
-            <img src="./assets/img/gallery4.png" alt="" />
-            <img src="./assets/img/gallery5.png" alt="" />
-            <img src="./assets/img/gallery1.png" alt="" />
+          <div class="gallery-grid" id="galleryGrid">
+            <!-- imágenes por JSON -->
           </div>
         </div>
       </div>
@@ -344,13 +191,10 @@
     <section id="rsvp" class="section section--framed">
       <div class="frame-box">
         <div class="rsvp-content text-center">
-          <h2 class="section-title">Asistencia</h2>
+          <h2 class="section-title" id="rsvpTitle">Asistencia</h2>
           <div class="divider"></div>
 
-          <p class="rsvp-intro">
-            Para nosotros será un honor contar con tu presencia en este día tan
-            especial. Agradecemos confirmar tu asistencia.
-          </p>
+          <p class="rsvp-intro" id="rsvpIntro"></p>
 
           <form class="rsvp-form">
             <input type="text" placeholder="Nombre completo" required />
@@ -370,14 +214,9 @@
             </button>
           </form>
 
-          <p class="rsvp-note">
-            Agradecemos confirmar antes del
-            <strong>15 de noviembre de 2026</strong>.
-          </p>
+          <p class="rsvp-note" id="rsvpNote"></p>
 
-          <div class="rsvp-success hidden">
-            ¡Gracias por confirmar! Nos encantará compartir este día contigo.
-          </div>
+          <div class="rsvp-success hidden" id="rsvpSuccess"></div>
         </div>
       </div>
     </section>
@@ -391,6 +230,7 @@
     </footer>
 
     <!-- JS -->
+    <script src="assets/js/data-loader.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/countdown.js"></script>
     <script src="assets/js/gallery.js"></script>
