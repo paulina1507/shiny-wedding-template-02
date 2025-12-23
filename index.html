@@ -49,53 +49,43 @@
           <a href="#rsvp">Asistencia</a>
         </nav>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-          ☰
-        </button>
-      </div>
-
-      <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-close" id="menuClose" aria-label="Cerrar menú">
-          ✕
-        </button>
-
-        <a href="#hero">Inicio</a>
-        <a href="#presentation">Presentación</a>
-        <a href="#location">Lugar</a>
-        <a href="#timeline">Programa</a>
-        <a href="#gifts">Regalos</a>
-        <a href="#dresscode">Vestimenta</a>
-        <a href="#gallery">Galería</a>
-        <a href="#rsvp">Asistencia</a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
       </div>
     </header>
 
-    <!-- =========================
-       HERO
-       ========================= -->
+    <!-- ================= SOBRE ================= -->
+    <div id="envelopeOverlay" class="envelope-overlay">
+      <div class="envelope">
+        <div class="flap front"></div>
+        <div class="flap top"></div>
+        <div class="letter"></div>
+        <div id="sealButton" class="seal">
+          <img src="assets/img/sello.svg" alt="Abrir" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= HERO ================= -->
     <section id="hero" class="hero">
       <div class="hero-bg"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <span class="hero-pretitle">Nuestra boda</span>
-
         <h1 class="hero-names">Gio <span>&</span> Sam</h1>
-
         <div class="hero-divider"></div>
-
         <div id="countdownTimer" class="hero-countdown"></div>
       </div>
 
-      <div class="hero-scroll">
-        <span></span>
-      </div>
+      <div class="hero-scroll"><span></span></div>
     </section>
 
-    <!-- =========================
-     LUGAR
-     ========================= -->
+    <!-- ================= LUGAR ================= -->
     <section id="location" class="section section--flowers section--soft">
+      <!-- FLORES -->
+      <div class="flower flower--top"></div>
+      <div class="flower flower--bottom"></div>
+
       <div class="container text-center">
         <h2 class="location-title">Nuestra celebración</h2>
         <p class="location-subtitle">Fecha y ubicación</p>
@@ -107,38 +97,32 @@
           </p>
 
           <div class="location-grid">
-            <!-- Ceremonia -->
             <div class="location-card">
               <h3 class="location-card-title">Ceremonia</h3>
               <p class="location-time">17:00 Hrs.</p>
-
               <img src="/assets/img/ceremonia.png" alt="Ceremonia" />
-
               <p class="location-place">Jardín del Lienzo Charro de la Villa</p>
-
               <p class="location-address">
                 Jardín SN, Guadalupe, 25750<br />
                 Monclova, Coah.
               </p>
-
-              <a href="#" class="btn btn-primary">Ver mapa</a>
+              <a href="https://www.google.com.mx/maps" class="btn btn-primary"
+                >Ver mapa</a
+              >
             </div>
 
-            <!-- Recepción -->
             <div class="location-card">
               <h3 class="location-card-title">Recepción</h3>
               <p class="location-time">19:00 Hrs.</p>
-
               <img src="/assets/img/recepcion.png" alt="Recepción" />
-
               <p class="location-place">Aurum Eventos</p>
-
               <p class="location-address">
                 Cuauhtémoc 1400, Cd Deportiva<br />
                 Monclova, Coah.
               </p>
-
-              <a href="#" class="btn btn-primary">Ver mapa</a>
+              <a href="https://www.google.com.mx/maps" class="btn btn-primary"
+                >Ver mapa</a
+              >
             </div>
           </div>
         </div>
@@ -242,10 +226,12 @@
       </div>
     </section>
 
-    <!-- =========================
-     REGALOS
-     ========================= -->
+    <!-- ================= REGALOS ================= -->
     <section id="gifts" class="section section--flowers section--soft">
+      <!-- FLORES -->
+      <div class="flower flower--top"></div>
+      <div class="flower flower--bottom"></div>
+
       <div class="container text-center">
         <h2 class="section-title">Regalos</h2>
         <div class="divider"></div>
@@ -280,7 +266,7 @@
     </section>
 
     <!-- =========================
-     CÓDIGO DE VESTIMENTA
+     VESTIMENTA
      ========================= -->
     <section id="dresscode" class="section section--framed">
       <div class="frame-box">
@@ -328,22 +314,24 @@
       </div>
     </section>
 
-    <!-- =========================
-       GALERÍA
-       ========================= -->
+    <!-- ================= GALERÍA ================= -->
     <section id="gallery" class="section section--flowers section--soft">
+      <!-- FLORES -->
+      <div class="flower flower--top"></div>
+      <div class="flower flower--bottom"></div>
+
       <div class="container">
         <h2 class="section-title text-center">Galería</h2>
         <div class="divider"></div>
 
         <div class="gallery-box">
           <div class="gallery-grid">
-            <img src="./assets/img/gallery1.png" alt="Galería 1" />
-            <img src="./assets/img/gallery2.png" alt="Galería 2" />
-            <img src="./assets/img/gallery3.png" alt="Galería 3" />
-            <img src="./assets/img/gallery4.png" alt="Galería 4" />
-            <img src="./assets/img/gallery5.png" alt="Galería 5" />
-            <img src="./assets/img/gallery1.png" alt="Galería 6" />
+            <img src="./assets/img/gallery1.png" alt="" />
+            <img src="./assets/img/gallery2.png" alt="" />
+            <img src="./assets/img/gallery3.png" alt="" />
+            <img src="./assets/img/gallery4.png" alt="" />
+            <img src="./assets/img/gallery5.png" alt="" />
+            <img src="./assets/img/gallery1.png" alt="" />
           </div>
         </div>
       </div>
@@ -353,65 +341,48 @@
        RSVP
        ========================= -->
 
-   <!-- =========================
-     RSVP / ASISTENCIA
-     ========================= -->
-<section id="rsvp" class="section section--framed">
-  <div class="frame-box">
+    <section id="rsvp" class="section section--framed">
+      <div class="frame-box">
+        <div class="rsvp-content text-center">
+          <h2 class="section-title">Asistencia</h2>
+          <div class="divider"></div>
 
-    <div class="rsvp-content text-center">
+          <p class="rsvp-intro">
+            Para nosotros será un honor contar con tu presencia en este día tan
+            especial. Agradecemos confirmar tu asistencia.
+          </p>
 
-      <h2 class="section-title">Asistencia</h2>
-      <div class="divider"></div>
+          <form class="rsvp-form">
+            <input type="text" placeholder="Nombre completo" required />
 
-      <p class="rsvp-intro">
-        Para nosotros será un honor contar con tu presencia en este día tan especial.  
-        Agradecemos confirmar tu asistencia.
-      </p>
+            <select required>
+              <option value="">¿Asistirás a nuestra celebración?</option>
+              <option>Sí asistiré</option>
+              <option>No podré asistir</option>
+            </select>
 
-      <form class="rsvp-form">
+            <textarea
+              placeholder="Mensaje o buenos deseos (opcional)"
+            ></textarea>
 
-        <input
-          type="text"
-          placeholder="Nombre completo"
-          required
-        />
+            <button type="submit" class="btn btn-primary">
+              Confirmar asistencia
+            </button>
+          </form>
 
-        <select required>
-          <option value="">¿Asistirás a nuestra celebración?</option>
-          <option>Sí asistiré</option>
-          <option>No podré asistir</option>
-        </select>
+          <p class="rsvp-note">
+            Agradecemos confirmar antes del
+            <strong>15 de noviembre de 2026</strong>.
+          </p>
 
-        <textarea
-          placeholder="Mensaje o buenos deseos (opcional)"
-        ></textarea>
-
-        <button type="submit" class="btn btn-primary">
-          Confirmar asistencia
-        </button>
-
-      </form>
-
-      <p class="rsvp-note">
-        Agradecemos confirmar antes del
-        <strong>15 de noviembre de 2026</strong>.
-      </p>
-
-      <div class="rsvp-success hidden">
-        ¡Gracias por confirmar!  
-        Nos encantará compartir este día contigo.
+          <div class="rsvp-success hidden">
+            ¡Gracias por confirmar! Nos encantará compartir este día contigo.
+          </div>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-  </div>
-</section>
-
-
-    <!-- =========================
-       FOOTER
-       ========================= -->
+    <!-- ================= FOOTER ================= -->
     <footer class="footer">
       <div class="container text-center">
         <p>Gio & Sam</p>

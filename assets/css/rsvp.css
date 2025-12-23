@@ -27,3 +27,73 @@
   color: var(--color-primary);
   font-family: var(--font-title);
 }
+
+/* =====================================================
+   RSVP – CON MARCO
+   ===================================================== */
+
+.rsvp-content{
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* Texto introductorio */
+.rsvp-intro{
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2.2rem;
+}
+
+/* Formulario */
+.rsvp-form{
+  display: grid;
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea{
+  width: 100%;
+  padding: .85rem .9rem;
+
+  font-family: var(--font-base);
+  font-size: 0.85rem;
+
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0,0,0,0.15);
+
+  background-color: #ffffff;
+}
+
+.rsvp-form textarea{
+  resize: none;
+  min-height: 90px;
+}
+
+/* Nota */
+.rsvp-note{
+  font-family: var(--font-base);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.4rem;
+}
+
+/* Mensaje de éxito */
+.rsvp-success{
+  font-family: var(--font-base);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  line-height: 1.6;
+}
+
+/* =========================
+   MÓVIL
+   ========================= */
+@media (max-width: 480px){
+  .rsvp-content{
+    max-width: 100%;
+  }
+}

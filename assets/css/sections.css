@@ -35,7 +35,7 @@
   box-sizing: border-box;
 
   background-color: #ffffff;
-
+  overflow: hidden;
   border: 20px solid var(--color-primary); /* MÁS GRUESO */
   padding: 3.5rem 1.8rem;
 }
@@ -94,59 +94,92 @@
 }
 
 /* =====================================================
-   SECCIÓN CON FLORES DECORATIVAS
+   FLORES DECORATIVAS – ELEMENTOS REALES
    ===================================================== */
+
 .section--flowers {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* Variantes de fondo */
-.section--flowers.section--white {
-  background-color: #ffffff;
-}
-
-.section--flowers.section--soft {
-  background-color: var(--bg-soft);
-}
-
-/* Flores decorativas */
-.section--flowers::before,
-.section--flowers::after {
-  content: '';
-  position: absolute;
-
-  width: 200px;
-  height: 200px;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  opacity: 0.9;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Flor superior izquierda */
-.section--flowers::before {
-  top: -32px;
-  left: -32px;
-  background-image: url('../img/flor-izquierda.svg');
-  background-position: top left;
-}
-
-/* Flor inferior derecha */
-.section--flowers::after {
-  bottom: -32px;
-  right: -32px;
-  background-image: url('../img/flor-derecha.svg');
-  background-position: bottom right;
-}
-
-/* Contenido siempre encima */
 .section--flowers .container {
   position: relative;
-  z-index: 2;
+  z-index: 4;
+}
+
+/* BASE */
+.flower {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+  transition: opacity 0.6s ease;
+  will-change: transform;
+}
+
+/* POSICIONES */
+.flower--top {
+  top: -18px;
+  left: -48px;
+  background-image: url("/assets/img/flor-izquierda.svg");
+  transform: translateY(-80px);
+}
+
+.flower--bottom {
+  bottom: -38px;
+  right: -48px;
+  background-image: url("/assets/img/flor-derecha.svg");
+  transform: translate(80px, 80px);
+}
+
+/* ACTIVACIÓN POR SCROLL */
+.section--flowers.flowers-visible .flower--top {
+  animation:
+    flowerTopEnter 1.2s ease forwards,
+    flowerTopFloat 16s ease-in-out infinite 1.2s;
+}
+
+.section--flowers.flowers-visible .flower--bottom {
+  animation:
+    flowerBottomEnter 1.2s ease forwards,
+    flowerBottomFloat 18s ease-in-out infinite 1.4s;
+}
+
+/* ENTRADA */
+@keyframes flowerTopEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flowerBottomEnter {
+  from {
+    opacity: 0;
+    transform: translate(80px, 80px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translate(0, 0);
+  }
+}
+
+.section--flowers.flowers-visible .flower--top,
+.section--flowers.flowers-visible .flower--bottom {
+  animation: flowerEnter 1.2s ease forwards;
+}
+
+@keyframes flowerEnter {
+  from { opacity: 0; }
+  to { opacity: 0.9; }
 }
 
 /* =====================================================
@@ -613,4 +646,3 @@
     font-size: 1.8rem;
   }
 }
-
