@@ -1,11 +1,53 @@
 {
+  "meta": {
+    "pageTitle": "David & Lizbeth | Nuestra Boda"
+  },
+
+  "site": {
+    "couple": "David & Lizbeth"
+  },
+
+  "nav": {
+    "left": [
+      { "label": "Inicio", "href": "#hero" },
+      { "label": "Presentación", "href": "#presentation" },
+      { "label": "Lugar", "href": "#location" },
+      { "label": "Programa", "href": "#timeline" }
+    ],
+    "right": [
+      { "label": "Regalos", "href": "#gifts" },
+      { "label": "Vestimenta", "href": "#dresscode" },
+      { "label": "Galería", "href": "#gallery" },
+      { "label": "Asistencia", "href": "#rsvp" }
+    ]
+  },
+
+  "music": {
+    "src": "assets/audio/cancion.mp3",
+    "autoplay": true
+  },
+
   "hero": {
     "pretitle": "Nuestra boda",
-    "names": "Gio <span>&</span> Sam",
+    "names": "David <span>&</span> Lizbeth",
     "date": "2026-04-20T17:00:00",
     "background": "assets/img/hero.png"
   },
-
+  "presentation": {
+    "title": "Con la gracia de Dios y la bendición de nuestros padres",
+    "parents": [
+      {
+        "names": ["Martín Armenta", "Juana Ortiz"],
+        "note": "Padres de la novia"
+      },
+      {
+        "names": ["Isaac García López", "Daniela Gonzáles Mata"],
+        "note": "Padres del novio"
+      }
+    ],
+    "text": "Uniremos nuestras vidas por el Sacramento del Matrimonio y tenemos el honor de invitarte a ser parte de esta celebración.",
+    "icon": "assets/img/novios.svg"
+  },
   "location": {
     "title": "Nuestra celebración",
     "subtitle": "Fecha y ubicación",
@@ -30,26 +72,53 @@
     ]
   },
 
-  "timeline": [
-    { "time": "18:00 hrs.", "text": "Ceremonia", "icon": "assets/img/3.svg" },
-    { "time": "19:00 hrs.", "text": "Boda civil", "icon": "assets/img/4.svg" },
-    { "time": "20:30 hrs.", "text": "Recepción", "icon": "assets/img/6.svg" },
-    { "time": "20:30 hrs.", "text": "Cena", "icon": "assets/img/7.svg" },
-    { "time": "21:30 hrs.", "text": "Todo mundo a bailar", "icon": "assets/img/8.svg" }
-  ],
+  "timeline": {
+    "title": "Itinerario",
+    "items": [
+      { "time": "18:00 hrs.", "text": "Ceremonia", "icon": "assets/img/3.svg" },
+      {
+        "time": "19:00 hrs.",
+        "text": "Boda civil",
+        "icon": "assets/img/4.svg"
+      },
+      { "time": "20:30 hrs.", "text": "Recepción", "icon": "assets/img/6.svg" },
+      { "time": "20:30 hrs.", "text": "Cena", "icon": "assets/img/7.svg" },
+      {
+        "time": "21:30 hrs.",
+        "text": "Todo mundo a bailar",
+        "icon": "assets/img/8.svg"
+      }
+    ]
+  },
 
   "gifts": {
+    "title": "Regalos",
     "text": "Tu presencia es nuestro mejor regalo.<br>Si deseas hacernos un obsequio, aquí te dejamos algunas opciones.",
     "items": [
-      { "icon": "assets/img/10.svg", "title": "Lluvia de sobres", "desc": "Un detalle lleno de buenos deseos." },
-      { "icon": "assets/img/12.svg", "title": "Transferencia bancaria", "desc": "Para quienes prefieran esta opción." },
-      { "icon": "assets/img/11.svg", "title": "Mesa de regalos", "desc": "Próximamente disponible." }
+      {
+        "icon": "assets/img/10.svg",
+        "title": "Lluvia de sobres",
+        "desc": "Un detalle lleno de buenos deseos."
+      },
+      {
+        "icon": "assets/img/12.svg",
+        "title": "Transferencia bancaria",
+        "desc": "Para quienes prefieran esta opción."
+      },
+      {
+        "icon": "assets/img/11.svg",
+        "title": "Mesa de regalos",
+        "desc": "Próximamente disponible."
+      }
     ]
   },
 
   "dresscode": {
+    "title": "Código de Vestimenta",
     "type": "Cóctel",
     "image": "assets/img/9.svg",
+    "menTitle": "Ellos",
+    "womenTitle": "Ellas",
     "men": [
       "Traje o saco con pantalón",
       "Camisa formal",
@@ -64,18 +133,34 @@
     "note": "En nuestra boda, el <strong>dress code cóctel</strong> es el principal. ¡Prepárate para brillar!"
   },
 
-  "gallery": [
-    "assets/img/gallery1.png",
-    "assets/img/gallery2.png",
-    "assets/img/gallery3.png",
-    "assets/img/gallery4.png",
-    "assets/img/gallery5.png",
-    "assets/img/gallery1.png"
-  ],
+  "gallery": {
+    "title": "Galería",
+    "images": [
+      "assets/img/gallery1.png",
+      "assets/img/gallery2.png",
+      "assets/img/gallery3.png",
+      "assets/img/gallery4.png",
+      "assets/img/gallery5.png",
+      "assets/img/gallery1.png"
+    ]
+  },
 
   "rsvp": {
+    "title": "Asistencia",
     "intro": "Para nosotros será un honor contar con tu presencia en este día tan especial.",
+    "fields": {
+      "namePlaceholder": "Nombre completo",
+      "attendancePlaceholder": "¿Asistirás a nuestra celebración?",
+      "attendanceOptions": ["Sí asistiré", "No podré asistir"],
+      "messagePlaceholder": "Mensaje o buenos deseos (opcional)",
+      "buttonText": "Confirmar asistencia"
+    },
     "note": "Agradecemos confirmar antes del <strong>15 de noviembre de 2026</strong>.",
     "success": "¡Gracias por confirmar! Nos encantará compartir este día contigo."
+  },
+
+  "footer": {
+    "names": "David & Lizbeth",
+    "credits": "Diseñado con amor por Shiny Maker Events"
   }
 }

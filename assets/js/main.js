@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
         revealContent();
         initFlowerObserver();
         initFlowerParallax();
+        initScrollReveal();
+        initTimeline();
       }, 1400);
     });
 
@@ -41,20 +43,48 @@ document.addEventListener("DOMContentLoaded", () => {
     revealContent();
     initFlowerObserver();
     initFlowerParallax();
+    initScrollReveal();
+    initTimeline();
   }
 
   /* =====================================================
-     REVEAL DE CONTENIDO
+     REVEAL GENERAL DE CONTENIDO
      ===================================================== */
 
   function revealContent() {
     const reveals = document.querySelectorAll(
-      ".reveal, .reveal-left, .reveal-right, .reveal-zoom"
+      ".reveal, .reveal-zoom"
     );
 
     reveals.forEach((el, i) => {
       setTimeout(() => el.classList.add("visible"), i * 120);
     });
+  }
+
+  /* =====================================================
+     SCROLL REVEAL – TÍTULOS Y TEXTO
+     ===================================================== */
+
+  function initScrollReveal() {
+    const elements = document.querySelectorAll(
+      ".reveal-title, .reveal-left, .reveal-right"
+    );
+
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    elements.forEach(el => observer.observe(el));
   }
 
   /* =====================================================
@@ -94,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const vh = window.innerHeight;
+
         if (rect.bottom < 0 || rect.top > vh) return;
 
         const progress = (vh - rect.top) / (vh + rect.height);
@@ -102,7 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
         section.querySelectorAll(".flower").forEach(flower => {
           const max = 60;
           const dir = flower.classList.contains("flower--top") ? 1 : -1;
-          flower.style.transform = `translate3d(0, ${clamped * max * dir}px, 0)`;
+          flower.style.transform =
+            `translate3d(0, ${clamped * max * dir}px, 0)`;
         });
       });
 
@@ -118,10 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =====================================================
-     TIMELINE – SE INICIALIZA DESDE AFUERA
+     TIMELINE – ANIMACIÓN Y PROGRESO
      ===================================================== */
 
-  window.initTimeline = function () {
+  function initTimeline() {
     const timeline = document.getElementById("timelineContainer");
     if (!timeline) return;
 
@@ -134,7 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             rows.forEach((row, i) => {
-              setTimeout(() => row.classList.add("is-visible"), i * 160);
+              setTimeout(() => {
+                row.classList.add("is-visible");
+              }, i * 160);
             });
             observer.disconnect();
           }
@@ -153,9 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
       progress = Math.max(0, Math.min(progress, 1));
 
       if (line) {
-        line.style.transform = `translateX(-50%) scaleY(${progress})`;
+        line.style.transform =
+          `translateX(-50%) scaleY(${progress})`;
       }
     });
-  };
+  }
 
 });

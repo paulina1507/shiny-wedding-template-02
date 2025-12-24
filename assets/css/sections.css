@@ -55,14 +55,6 @@
   text-align: center;
 }
 
-.presentation-title {
-  font-family: var(--font-title);
-  font-size: 1.35rem;
-  color: var(--color-primary);
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-}
-
 .presentation-parents {
   margin-bottom: 2.2rem;
 }
@@ -79,6 +71,9 @@
   font-size: 0.85rem;
   color: var(--color-primary);
   font-style: italic;
+
+  display: block;
+  margin-bottom: 2.2rem; /* ← ESTE es el espacio entre familias */
 }
 
 .presentation-text {
@@ -90,8 +85,20 @@
 }
 
 .presentation-icon {
-  width: 42px;
+  width: 140px;
+  margin: 3rem auto 0;
+  animation: floatIcon 6s ease-in-out infinite;
 }
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 
 /* =====================================================
    FLORES DECORATIVAS – ELEMENTOS REALES
@@ -186,8 +193,6 @@
 /* =====================================================
    UBICACIÓN / LUGAR
    ===================================================== */
-
-
 .location-box{
   max-width: 900px;
   margin: 0 auto;
@@ -243,15 +248,6 @@
 
 #location{
   font-family: var(--font-base);
-}
-
-/* Título principal */
-.location-title{
-  font-family: var(--font-script);
-  font-size: 2.2rem;
-  color: var(--color-primary);
-  margin-bottom: 0.4rem;
-  margin-top: 3rem;
 }
 
 /* Subtítulo */
@@ -312,15 +308,6 @@
 /* =====================================================
    PROGRAMA / ITINERARIO
    ===================================================== */
-
-.timeline-title{
-  text-align:center;
-  font-family: var(--font-script);
-  font-size: 2.2rem;
-  color: var(--color-primary);
-  margin: 0 0 4rem;
-}
-
 .timeline-vertical{
   position: relative;
   max-width: 520px;
@@ -516,14 +503,6 @@
   opacity: .85;
 }
 
-/* Título */
-.gift-title{
-  font-family: var(--font-title);
-  font-size: 0.9rem;
-  margin-bottom: .3rem;
-  color: var(--color-primary);
-}
-
 /* Descripción */
 .gift-desc{
   font-family: var(--font-base);
@@ -678,3 +657,49 @@ html, body {
   left: 0;
   right: 0;
 }
+
+/* =========================
+   ANIMACIONES POR SCROLL
+   ========================= */
+
+/* Estado inicial */
+.reveal-title {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+/* Estado visible */
+.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .reveal-left {
+    transform: translateX(-80px);
+  }
+
+  .reveal-right {
+    transform: translateX(80px);
+  }
+
+  /* 👇 ESTO ES LA CLAVE */
+  .reveal-left.is-visible,
+  .reveal-right.is-visible {
+    transform: translateX(0);
+  }
+}
+

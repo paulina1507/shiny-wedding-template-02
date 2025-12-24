@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Gio & Sam | Nuestra Boda</title>
+    <title id="pageTitle"></title>
 
     <!-- Google Fonts -->
     <link
@@ -24,30 +24,24 @@
     <link rel="stylesheet" href="assets/css/rsvp.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
   </head>
+  <!-- ================= MUSIC PLAYER ================= -->
+  <button id="musicToggle" class="music-toggle" aria-label="Música">
+    <img id="musicIcon" src="/assets/img/pause.svg" alt="" />
+  </button>
+
+  <audio id="bgMusic" preload="auto" loop></audio>
 
   <body>
-    <!-- =========================
-       HEADER
-       ========================= -->
+    <!-- ========================= HEADER ========================= -->
     <header class="header" id="header">
       <div class="header-container">
-        <nav class="nav nav-left">
-          <a href="#hero">Inicio</a>
-          <a href="#presentation">Presentación</a>
-          <a href="#location">Lugar</a>
-          <a href="#timeline">Programa</a>
-        </nav>
+        <nav class="nav nav-left" id="navLeft"></nav>
 
         <div class="header-logo">
-          <a href="#hero">Gio & Sam</a>
+          <a href="#hero" id="headerLogo"></a>
         </div>
 
-        <nav class="nav nav-right">
-          <a href="#gifts">Regalos</a>
-          <a href="#dresscode">Vestimenta</a>
-          <a href="#gallery">Galería</a>
-          <a href="#rsvp">Asistencia</a>
-        </nav>
+        <nav class="nav nav-right" id="navRight"></nav>
 
         <button class="menu-toggle" id="menuToggle">☰</button>
       </div>
@@ -60,7 +54,7 @@
         <div class="flap top"></div>
         <div class="letter"></div>
         <div id="sealButton" class="seal">
-          <img src="assets/img/sello.svg" alt="Abrir" />
+          <img src="assets/img/sello.svg" alt="" />
         </div>
       </div>
     </div>
@@ -79,84 +73,91 @@
 
       <div class="hero-scroll"><span></span></div>
     </section>
+    <!-- ================= PRESENTACIÓN ================= -->
+<section id="presentation" class="section section--framed">
+  <div class="frame-box">
+    <div class="presentation-content">
+
+      <h2 class="section-title reveal-title" id="presentationTitle"></h2>
+
+      <div class="presentation-parents reveal-left" id="presentationParents">
+        <!-- contenido por JSON -->
+      </div>
+
+      <p class="presentation-text reveal-right" id="presentationText"></p>
+
+      <img
+        id="presentationIcon"
+        class="presentation-icon"
+        alt=""
+      />
+
+    </div>
+  </div>
+</section>
 
     <!-- ================= LUGAR ================= -->
     <section id="location" class="section section--flowers section--soft">
-      <!-- FLORES -->
       <div class="flower flower--top"></div>
       <div class="flower flower--bottom"></div>
 
       <div class="container text-center">
-        <h2 class="location-title" id="locationTitle"></h2>
-        <p class="location-subtitle" id="locationSubtitle"></p>
+        <h2 class="section-title reveal-title" id="locationTitle"></h2>
+        <p class="location-subtitle reveal-left" id="locationSubtitle"></p>
 
         <div class="location-box">
-          <p class="location-date" id="locationDate"></p>
-
-          <div class="location-grid" id="locationGrid">
-            <!-- cards inyectadas por JS -->
-          </div>
+          <p class="location-date reveal-right" id="locationDate"></p>
+          <div class="location-grid reveal-left" id="locationGrid"></div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-       PROGRAMA
-       ========================= -->
+    <!-- ================= PROGRAMA ================= -->
     <section id="timeline" class="section section--framed">
       <div class="frame-box">
-        <h2 class="timeline-title" id="timelineTitle">Itinerario</h2>
+        <h2 class="section-title reveal-title" id="timelineTitle"></h2>
 
         <div class="timeline-vertical" id="timelineContainer">
           <div class="timeline-line"></div>
-          <!-- rows inyectados por JS -->
         </div>
       </div>
     </section>
 
     <!-- ================= REGALOS ================= -->
     <section id="gifts" class="section section--flowers section--soft">
-      <!-- FLORES -->
       <div class="flower flower--top"></div>
       <div class="flower flower--bottom"></div>
 
       <div class="container text-center">
-        <h2 class="section-title" id="giftsTitle">Regalos</h2>
+        <h2 class="section-title reveal-title" id="giftsTitle"></h2>
         <div class="divider"></div>
 
         <div class="gifts-box">
-          <p class="gifts-text" id="giftsText"></p>
-
-          <div class="gifts-options" id="giftsOptions">
-            <!-- gift items por JSON -->
-          </div>
+          <p class="gifts-text reveal-left" id="giftsText"></p>
+          <div class="gifts-options reveal-right" id="giftsOptions"></div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-     VESTIMENTA
-     ========================= -->
+    <!-- ================= VESTIMENTA ================= -->
     <section id="dresscode" class="section section--framed">
       <div class="frame-box">
         <div class="dresscode-content">
-          <h2 class="section-title" id="dresscodeTitle">
-            Código de Vestimenta
-          </h2>
+          <h2 class="section-title reveal-title" id="dresscodeTitle"></h2>
           <div class="divider"></div>
 
           <img id="dresscodeImage" class="dresscode-illustration" alt="" />
 
-          <h3 class="dresscode-type" id="dresscodeType"></h3>
+          <h3 class="dresscode-type reveal-right" id="dresscodeType"></h3>
 
-          <div class="dresscode-grid">
+          <div class="dresscode-grid reveal-left">
             <div class="dresscode-col">
-              <h4>Ellos</h4>
+              <h4 id="dresscodeMenTitle"></h4>
               <ul id="dresscodeMen"></ul>
             </div>
 
-            <div class="dresscode-col">
-              <h4>Ellas</h4>
+            <div class="dresscode-col reveal-right">
+              <h4 id="dresscodeWomenTitle"></h4>
               <ul id="dresscodeWomen"></ul>
             </div>
           </div>
@@ -168,54 +169,40 @@
 
     <!-- ================= GALERÍA ================= -->
     <section id="gallery" class="section section--flowers section--soft">
-      <!-- FLORES -->
       <div class="flower flower--top"></div>
       <div class="flower flower--bottom"></div>
 
       <div class="container">
-        <h2 class="section-title text-center" id="galleryTitle">Galería</h2>
+        <h2 class="section-title reveal-title text-center" id="galleryTitle"></h2>
         <div class="divider"></div>
 
         <div class="gallery-box">
-          <div class="gallery-grid" id="galleryGrid">
-            <!-- imágenes por JSON -->
-          </div>
+          <div class="gallery-grid" id="galleryGrid"></div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-       RSVP
-       ========================= -->
-
+    <!-- ================= RSVP ================= -->
     <section id="rsvp" class="section section--framed">
       <div class="frame-box">
         <div class="rsvp-content text-center">
-          <h2 class="section-title" id="rsvpTitle">Asistencia</h2>
+          <h2 class="section-title reveal-title" id="rsvpTitle"></h2>
           <div class="divider"></div>
 
-          <p class="rsvp-intro" id="rsvpIntro"></p>
+          <p class="rsvp-intro reveal-left" id="rsvpIntro"></p>
 
-          <form class="rsvp-form">
-            <input type="text" placeholder="Nombre completo" required />
-
-            <select required>
-              <option value="">¿Asistirás a nuestra celebración?</option>
-              <option>Sí asistiré</option>
-              <option>No podré asistir</option>
-            </select>
-
-            <textarea
-              placeholder="Mensaje o buenos deseos (opcional)"
-            ></textarea>
-
-            <button type="submit" class="btn btn-primary">
-              Confirmar asistencia
-            </button>
+          <form class="rsvp-form" id="rsvpForm">
+            <input type="text" id="rsvpName" required />
+            <select id="rsvpAttendance" required></select>
+            <textarea id="rsvpMessage"></textarea>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="rsvpButton"
+            ></button>
           </form>
 
           <p class="rsvp-note" id="rsvpNote"></p>
-
           <div class="rsvp-success hidden" id="rsvpSuccess"></div>
         </div>
       </div>
@@ -224,8 +211,8 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
       <div class="container text-center">
-        <p>Gio & Sam</p>
-        <small>Diseñado con amor por Shiny Maker Events</small>
+        <p id="footerNames"></p>
+        <small id="footerCredits"></small>
       </div>
     </footer>
 
