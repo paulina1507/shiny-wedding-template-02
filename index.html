@@ -74,27 +74,24 @@
       <div class="hero-scroll"><span></span></div>
     </section>
     <!-- ================= PRESENTACIÓN ================= -->
-<section id="presentation" class="section section--framed">
-  <div class="frame-box">
-    <div class="presentation-content">
+    <section id="presentation" class="section section--framed">
+      <div class="frame-box">
+        <div class="presentation-content">
+          <h2 class="section-title reveal-title" id="presentationTitle"></h2>
 
-      <h2 class="section-title reveal-title" id="presentationTitle"></h2>
+          <div
+            class="presentation-parents reveal-left"
+            id="presentationParents"
+          >
+            <!-- contenido por JSON -->
+          </div>
 
-      <div class="presentation-parents reveal-left" id="presentationParents">
-        <!-- contenido por JSON -->
+          <p class="presentation-text reveal-right" id="presentationText"></p>
+
+          <img id="presentationIcon" class="presentation-icon" alt="" />
+        </div>
       </div>
-
-      <p class="presentation-text reveal-right" id="presentationText"></p>
-
-      <img
-        id="presentationIcon"
-        class="presentation-icon"
-        alt=""
-      />
-
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- ================= LUGAR ================= -->
     <section id="location" class="section section--flowers section--soft">
@@ -173,7 +170,10 @@
       <div class="flower flower--bottom"></div>
 
       <div class="container">
-        <h2 class="section-title reveal-title text-center" id="galleryTitle"></h2>
+        <h2
+          class="section-title reveal-title text-center"
+          id="galleryTitle"
+        ></h2>
         <div class="divider"></div>
 
         <div class="gallery-box">
@@ -183,30 +183,59 @@
     </section>
 
     <!-- ================= RSVP ================= -->
-    <section id="rsvp" class="section section--framed">
-      <div class="frame-box">
-        <div class="rsvp-content text-center">
-          <h2 class="section-title reveal-title" id="rsvpTitle"></h2>
-          <div class="divider"></div>
+<section id="rsvp" class="section section--framed">
+  <div class="frame-box">
+    <div class="rsvp-content text-center">
 
-          <p class="rsvp-intro reveal-left" id="rsvpIntro"></p>
+      <h2 class="section-title reveal-title" id="rsvpTitle"></h2>
+      <div class="divider"></div>
 
-          <form class="rsvp-form" id="rsvpForm">
-            <input type="text" id="rsvpName" required />
-            <select id="rsvpAttendance" required></select>
-            <textarea id="rsvpMessage"></textarea>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              id="rsvpButton"
-            ></button>
-          </form>
+      <p class="rsvp-intro reveal-left" id="rsvpIntro"></p>
 
-          <p class="rsvp-note" id="rsvpNote"></p>
-          <div class="rsvp-success hidden" id="rsvpSuccess"></div>
-        </div>
+      <form class="rsvp-form" id="rsvpForm">
+        <input
+          type="text"
+          id="rsvpName"
+          required
+        />
+
+        <select
+          id="rsvpAttendance"
+          required
+        ></select>
+
+        <textarea
+          id="rsvpMessage"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="rsvpButton"
+        ></button>
+      </form>
+
+      <!-- INFO ASIGNADA (SOLO DESPUÉS DE CONFIRMAR) -->
+      <div class="rsvp-extra hidden" id="rsvpExtra">
+        <p class="rsvp-info">
+          <strong>Pases asignados:</strong>
+          <span id="rsvpPassesText"></span>
+        </p>
+
+        <p class="rsvp-info">
+          <strong>Mesa asignada:</strong>
+          <span id="rsvpTableText"></span>
+        </p>
       </div>
-    </section>
+
+      <p class="rsvp-note" id="rsvpNote"></p>
+
+      <div class="rsvp-success hidden" id="rsvpSuccess"></div>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">

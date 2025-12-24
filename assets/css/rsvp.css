@@ -89,6 +89,26 @@
   line-height: 1.6;
 }
 
+.rsvp-extra {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.rsvp-extra.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.rsvp-extra:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* =========================
    MÓVIL
    ========================= */

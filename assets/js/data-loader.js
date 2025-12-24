@@ -72,12 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
         presentationParents.innerHTML = "";
         data.presentation.parents.forEach((group) => {
           presentationParents.innerHTML += `
-            <p class="parents-names">
-              ${group.names.join("<br>")}
-            </p>
-            <p class="parents-note">
-              (${group.note})
-            </p>
+            <p class="parents-names">${group.names.join("<br>")}</p>
+            <p class="parents-note">(${group.note})</p>
           `;
         });
       }
@@ -111,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="location-card reveal-zoom">
               <h3 class="location-card-title">${place.title}</h3>
               <p class="location-time">${place.time}</p>
-              <img src="${place.image}" alt="">
+              <img src="${place.image}">
               <p class="location-place">${place.place}</p>
               <p class="location-address">${place.address}</p>
               <a href="${place.map}" class="btn btn-primary" target="_blank">Ver mapa</a>
@@ -138,9 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${
                   i % 2 === 0
                     ? `<img class="timeline-icon" src="${item.icon}">`
-                    : `<div class="timeline-text">
-                         <span class="time">${item.time}</span>${item.text}
-                       </div>`
+                    : `<div class="timeline-text"><span class="time">${item.time}</span>${item.text}</div>`
                 }
               </div>
               <div class="timeline-center"><span class="timeline-point"></span></div>
@@ -148,9 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${
                   i % 2
                     ? `<img class="timeline-icon" src="${item.icon}">`
-                    : `<div class="timeline-text">
-                         <span class="time">${item.time}</span>${item.text}
-                       </div>`
+                    : `<div class="timeline-text"><span class="time">${item.time}</span>${item.text}</div>`
                 }
               </div>
             </div>
@@ -228,13 +220,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (galleryGrid && data.gallery?.images) {
         galleryGrid.innerHTML = "";
         data.gallery.images.forEach((img) => {
-          galleryGrid.innerHTML += `<img src="${img}" alt="">`;
+          galleryGrid.innerHTML += `<img src="${img}">`;
         });
       }
-
       /* =====================================================
-         RSVP
-         ===================================================== */
+   RSVP (CONFIRMACIÓN + DATOS ASIGNADOS)
+   ===================================================== */
 
       const rsvpTitle = document.getElementById("rsvpTitle");
       const rsvpIntro = document.getElementById("rsvpIntro");
@@ -246,29 +237,68 @@ document.addEventListener("DOMContentLoaded", () => {
       const rsvpMessage = document.getElementById("rsvpMessage");
       const rsvpButton = document.getElementById("rsvpButton");
 
+      /* Textos asignados */
+      const rsvpExtra = document.getElementById("rsvpExtra");
+      const rsvpPassesText = document.getElementById("rsvpPassesText");
+      const rsvpTableText = document.getElementById("rsvpTableText");
+
+      /* Texto base */
       if (rsvpTitle) rsvpTitle.innerHTML = data.rsvp?.title || "";
       if (rsvpIntro) rsvpIntro.innerHTML = data.rsvp?.intro || "";
       if (rsvpNote) rsvpNote.innerHTML = data.rsvp?.note || "";
-      if (rsvpSuccess) rsvpSuccess.innerHTML = data.rsvp?.success || "";
 
       if (rsvpName)
         rsvpName.placeholder = data.rsvp?.fields?.namePlaceholder || "";
+
       if (rsvpMessage)
         rsvpMessage.placeholder = data.rsvp?.fields?.messagePlaceholder || "";
+
       if (rsvpButton)
         rsvpButton.innerHTML = data.rsvp?.fields?.buttonText || "";
 
+      /* Select asistencia */
       if (rsvpAttendance) {
         rsvpAttendance.innerHTML = `<option value="">${
           data.rsvp?.fields?.attendancePlaceholder || ""
         }</option>`;
+
         data.rsvp?.fields?.attendanceOptions?.forEach((opt) => {
           rsvpAttendance.innerHTML += `<option>${opt}</option>`;
         });
       }
 
+      /* Envío */
+      const rsvpForm = document.getElementById("rsvpForm");
+
+      if (rsvpForm) {
+        rsvpForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const asistencia = rsvpAttendance.value.toLowerCase();
+
+          if (asistencia.includes("sí")) {
+            if (rsvpPassesText)
+              rsvpPassesText.textContent =
+                data.rsvp?.fields?.assignedPasses || "-";
+
+            if (rsvpTableText)
+              rsvpTableText.textContent =
+                data.rsvp?.fields?.assignedTable || "-";
+
+            rsvpExtra.classList.remove("hidden");
+          }
+
+          rsvpSuccess.innerHTML = `
+      ${data.rsvp?.success || ""}
+    `;
+
+          rsvpSuccess.classList.remove("hidden");
+          rsvpForm.classList.add("hidden");
+        });
+      }
+
       /* =====================================================
-         🎵 MUSIC PLAYER (fade-in al abrir el sobre)
+         🎵 MUSIC PLAYER
          ===================================================== */
 
       const music = document.getElementById("bgMusic");
@@ -323,20 +353,16 @@ document.addEventListener("DOMContentLoaded", () => {
           isPlaying ? pauseMusic() : playMusic();
         });
       }
+
       /* =====================================================
-   FOOTER
-   ===================================================== */
+         FOOTER
+         ===================================================== */
 
       const footerNames = document.getElementById("footerNames");
       const footerCredits = document.getElementById("footerCredits");
 
-      if (footerNames) {
-        footerNames.innerHTML = data.footer?.names || "";
-      }
-
-      if (footerCredits) {
-        footerCredits.innerHTML = data.footer?.credits || "";
-      }
+      if (footerNames) footerNames.innerHTML = data.footer?.names || "";
+      if (footerCredits) footerCredits.innerHTML = data.footer?.credits || "";
 
       /* =====================================================
          INIT
