@@ -2,9 +2,11 @@
    GALLERY LIGHTBOX + CAROUSEL
    ===================================================== */
 
-const galleryImages = document.querySelectorAll('.gallery-grid img');
+function initGallery() {
 
-if (galleryImages.length) {
+  const galleryImages = document.querySelectorAll('.gallery-grid img');
+
+  if (!galleryImages.length) return;
 
   let currentIndex = 0;
 

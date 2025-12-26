@@ -6,7 +6,10 @@
 
     <title id="pageTitle"></title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/reset.css" />
@@ -20,14 +23,15 @@
     <link rel="stylesheet" href="assets/css/rsvp.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
   </head>
-  <!-- ================= MUSIC PLAYER ================= -->
-  <button id="musicToggle" class="music-toggle" aria-label="Música">
-    <img id="musicIcon" src="/assets/img/pause.svg" alt="" />
-  </button>
-
-  <audio id="bgMusic" preload="auto" loop></audio>
 
   <body>
+    <!-- ================= MUSIC PLAYER ================= -->
+    <button id="musicToggle" class="music-toggle" aria-label="Música">
+      <img id="musicIcon" src="assets/img/play.svg" />
+    </button>
+
+    <audio id="bgMusic" loop playsinline></audio>
+
     <!-- ========================= HEADER ========================= -->
     <header class="header" id="header">
       <div class="header-container">

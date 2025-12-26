@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then((data) => {
       /* =====================================================
+         🎵 MUSIC DESDE JSON (NO BORRA NADA)
+         ===================================================== */
+      const musicEl = document.getElementById("bgMusic");
+      if (musicEl && data.music?.src) {
+        musicEl.src = data.music.src;
+        musicEl.preload = "auto";
+      }
+
+      /* =====================================================
          META / SITE
          ===================================================== */
 
@@ -219,11 +228,14 @@ document.addEventListener("DOMContentLoaded", () => {
         data.gallery.images.forEach((img) => {
           galleryGrid.innerHTML += `<img src="${img}">`;
         });
+        if (window.initGallery) {
+          initGallery();
+        }
       }
 
       /* =====================================================
-   RSVP (TICKET DIGITAL + QR)
-   ===================================================== */
+         RSVP (FORM + QR)
+         ===================================================== */
 
       const rsvpTitle = document.getElementById("rsvpTitle");
       const rsvpIntro = document.getElementById("rsvpIntro");
@@ -242,8 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const rsvpGuestName = document.getElementById("rsvpGuestName");
       const rsvpQrCanvas = document.getElementById("rsvpQr");
 
-      /* ===== Textos base ===== */
-
       if (rsvpTitle) rsvpTitle.innerHTML = data.rsvp?.title || "";
       if (rsvpIntro) rsvpIntro.innerHTML = data.rsvp?.intro || "";
       if (rsvpNote) rsvpNote.innerHTML = data.rsvp?.note || "";
@@ -257,21 +267,16 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rsvpButton)
         rsvpButton.innerHTML = data.rsvp?.fields?.buttonText || "";
 
-      /* ===== Select asistencia ===== */
-
       if (rsvpAttendance) {
         rsvpAttendance.innerHTML = `
-    <option value="">
-      ${data.rsvp?.fields?.attendancePlaceholder || ""}
-    </option>
-  `;
-
+          <option value="">
+            ${data.rsvp?.fields?.attendancePlaceholder || ""}
+          </option>
+        `;
         data.rsvp?.fields?.attendanceOptions?.forEach((opt) => {
           rsvpAttendance.innerHTML += `<option>${opt}</option>`;
         });
       }
-
-      /* ===== Submit RSVP ===== */
 
       if (rsvpForm) {
         rsvpForm.addEventListener("submit", (e) => {
@@ -280,24 +285,18 @@ document.addEventListener("DOMContentLoaded", () => {
           const asistencia = rsvpAttendance.value.toLowerCase();
           const guestName = rsvpName.value.trim();
 
-          /* Nombre del invitado */
-          if (rsvpGuestName) {
-            rsvpGuestName.textContent = guestName;
-          }
+          if (rsvpGuestName) rsvpGuestName.textContent = guestName;
 
-          /* Mostrar datos solo si asiste */
           if (asistencia.includes("sí")) {
             if (rsvpPassesText)
               rsvpPassesText.textContent =
                 data.rsvp?.assigned?.passesValue || "-";
-
             if (rsvpTableText)
               rsvpTableText.textContent =
                 data.rsvp?.assigned?.tableValue || "-";
 
             rsvpExtra.classList.remove("hidden");
 
-            /* ===== QR ===== */
             if (window.QRious && rsvpQrCanvas) {
               const qrData = JSON.stringify({
                 guest: guestName,
@@ -315,11 +314,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
 
-          /* Mensaje final */
           rsvpSuccess.innerHTML = data.rsvp?.success || "";
           rsvpSuccess.classList.remove("hidden");
-
-          /* Ocultar formulario */
           rsvpForm.classList.add("hidden");
         });
       }
@@ -333,14 +329,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (footerNames) footerNames.innerHTML = data.footer?.names || "";
       if (footerCredits) footerCredits.innerHTML = data.footer?.credits || "";
-
-      /* =====================================================
-         INIT
-         ===================================================== */
-
-      if (window.initTimeline) window.initTimeline();
-      if (window.initFlowerObserver) window.initFlowerObserver();
-      if (window.initFlowerParallax) window.initFlowerParallax();
     })
     .catch((err) => console.error("Error cargando invitation.json:", err));
 });

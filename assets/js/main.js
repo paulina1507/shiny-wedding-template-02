@@ -3,6 +3,34 @@
    ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* =====================================================
+     AUDIO – SINCRONIZACIÓN DE ÍCONOS (GLOBAL)
+     ===================================================== */
+
+  const music = document.getElementById("bgMusic");
+  const icon = document.getElementById("musicIcon");
+  const toggle = document.getElementById("musicToggle");
+
+  if (music && icon && toggle) {
+    music.addEventListener("play", () => {
+      icon.src = "assets/img/pause.svg";
+      toggle.classList.add("playing");
+    });
+
+    music.addEventListener("pause", () => {
+      icon.src = "assets/img/play.svg";
+      toggle.classList.remove("playing");
+    });
+
+    // Toggle manual play / pause
+    toggle.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(() => {});
+      } else {
+        music.pause();
+      }
+    });
+  }
 
   /* =====================================================
      INTRO – SOBRE GLOBAL
@@ -16,15 +44,38 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "hidden";
 
     seal.addEventListener("click", () => {
+      /* Desactivar animación del sello */
       seal.style.animation = "none";
       seal.style.opacity = "0";
 
+      /* Abrir sobre */
       envelope.classList.add("open");
 
+      /* 🎵 AUDIO: MISMO CLICK (GESTO REAL DEL USUARIO) */
+      if (music) {
+        music.volume = 0.6;
+        music.muted = true; // Edge workaround
+
+        music
+          .play()
+          .then(() => {
+            music.muted = false;
+
+            // 🔥 SINCRONIZACIÓN FORZADA
+            icon.src = "assets/img/pause.svg";
+            toggle.classList.add("playing");
+          })
+          .catch((err) => {
+            console.error("Edge bloqueó el audio:", err);
+          });
+      }
+
+      /* Animación de salida del sobre */
       setTimeout(() => {
         envelope.classList.add("drop-exit");
       }, 400);
 
+      /* Revelar contenido */
       setTimeout(() => {
         overlay.classList.add("fade-out");
         document.body.style.overflow = "auto";
@@ -37,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
         initTimeline();
       }, 1400);
     });
-
   } else {
+    /* Fallback sin sobre */
     document.body.classList.add("content-ready");
     revealContent();
     initFlowerObserver();
@@ -52,10 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ===================================================== */
 
   function revealContent() {
-    const reveals = document.querySelectorAll(
-      ".reveal, .reveal-zoom"
-    );
-
+    const reveals = document.querySelectorAll(".reveal, .reveal-zoom");
     reveals.forEach((el, i) => {
       setTimeout(() => el.classList.add("visible"), i * 120);
     });
@@ -69,12 +117,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const elements = document.querySelectorAll(
       ".reveal-title, .reveal-left, .reveal-right"
     );
-
     if (!elements.length) return;
 
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
             observer.unobserve(entry.target);
@@ -84,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.3 }
     );
 
-    elements.forEach(el => observer.observe(el));
+    elements.forEach((el) => observer.observe(el));
   }
 
   /* =====================================================
@@ -96,8 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("flowers-visible");
             observer.unobserve(entry.target);
@@ -107,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.25 }
     );
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
   }
 
   /* =====================================================
@@ -121,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let ticking = false;
 
     function update() {
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const vh = window.innerHeight;
 
@@ -130,11 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const progress = (vh - rect.top) / (vh + rect.height);
         const clamped = Math.max(0, Math.min(progress, 1));
 
-        section.querySelectorAll(".flower").forEach(flower => {
+        section.querySelectorAll(".flower").forEach((flower) => {
           const max = 60;
           const dir = flower.classList.contains("flower--top") ? 1 : -1;
-          flower.style.transform =
-            `translate3d(0, ${clamped * max * dir}px, 0)`;
+          flower.style.transform = `translate3d(0, ${
+            clamped * max * dir
+          }px, 0)`;
         });
       });
 
@@ -162,13 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!rows.length) return;
 
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             rows.forEach((row, i) => {
-              setTimeout(() => {
-                row.classList.add("is-visible");
-              }, i * 160);
+              setTimeout(() => row.classList.add("is-visible"), i * 160);
             });
             observer.disconnect();
           }
@@ -187,10 +233,8 @@ document.addEventListener("DOMContentLoaded", () => {
       progress = Math.max(0, Math.min(progress, 1));
 
       if (line) {
-        line.style.transform =
-          `translateX(-50%) scaleY(${progress})`;
+        line.style.transform = `translateX(-50%) scaleY(${progress})`;
       }
     });
   }
-
 });

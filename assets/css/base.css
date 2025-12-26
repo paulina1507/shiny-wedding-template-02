@@ -39,7 +39,10 @@ a:hover {
 /* =========================
    HEADINGS
    ========================= */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   font-family: var(--font-title);
   font-weight: 400;
@@ -182,6 +185,14 @@ p {
   backdrop-filter: blur(6px);
 }
 
+.envelope-overlay {
+  pointer-events: auto; /* 👈 IMPORTANTE */
+}
+
+.hero-overlay {
+  pointer-events: none;
+}
+
 /* ============================= */
 /* ANIMACIÓN DE SALIDA DEL SOBRE */
 /* ============================= */
@@ -213,8 +224,7 @@ p {
   perspective: 1000px;
   overflow: hidden;
 
-  box-shadow:
-    inset 0 2px 0 rgba(255,255,255,0.7),
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.7),
     0 14px 34px rgba(0, 0, 0, 0.22);
 }
 
@@ -223,17 +233,16 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
+  background: linear-gradient(
       45deg,
       transparent 48.8%,
-      rgba(0,0,0,0.08) 50%,
+      rgba(0, 0, 0, 0.08) 50%,
       transparent 51.2%
     ),
     linear-gradient(
       -45deg,
       transparent 48.8%,
-      rgba(0,0,0,0.08) 50%,
+      rgba(0, 0, 0, 0.08) 50%,
       transparent 51.2%
     );
   pointer-events: none;
@@ -271,7 +280,7 @@ p {
   bottom: -118px;
   border-width: 116px 210px;
   border-style: solid;
-  border-bottom-color: rgba(0,0,0,0.06);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
   border-left-color: transparent;
   border-right-color: transparent;
   border-top-color: transparent;
@@ -288,9 +297,8 @@ p {
   transform-origin: top center;
   z-index: 4;
 
-  box-shadow:
-    inset 0 -1px 0 rgba(255,255,255,0.6),
-    inset 0 -12px 18px rgba(0,0,0,0.06);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -12px 18px rgba(0, 0, 0, 0.06);
 }
 
 /* ============================= */
@@ -333,25 +341,32 @@ p {
 
   animation: sealIdle 2.6s ease-in-out infinite;
 
-  filter:
-    drop-shadow(0 10px 18px rgba(0,0,0,0.28))
-    drop-shadow(0 2px 4px rgba(255,255,255,0.35));
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28))
+    drop-shadow(0 2px 4px rgba(255, 255, 255, 0.35));
 
   transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
 }
 
 /* latido */
 @keyframes sealIdle {
-  0%   { transform: scale(1); }
-  35%  { transform: scale(1.06); }
-  55%  { transform: scale(1.01); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.06);
+  }
+  55% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* click */
 .seal.press img {
   transform: scale(0.82) translateY(4px);
-  filter: blur(0.6px) drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  filter: blur(0.6px) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
 }
 
 /* desaparecer */
@@ -374,14 +389,22 @@ p {
     width: 80px;
     height: 80px;
     animation: sealIdleMobile 2.8s ease-in-out infinite;
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.25));
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
   }
 
   @keyframes sealIdleMobile {
-    0%   { transform: scale(1); }
-    40%  { transform: scale(1.06); }
-    70%  { transform: scale(1.02); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.06);
+    }
+    70% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   .seal.press img {
@@ -403,21 +426,22 @@ p {
   position: fixed;
   bottom: 1.4rem;
   right: 1.4rem;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9998;
+  z-index: 9999;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .music-toggle img {
-  width: 46px;
-  height: 46px;
+  width: 36px;
+  height: 36px;
 }
 
 /* animación suave cuando está sonando */
@@ -428,14 +452,14 @@ p {
 @keyframes musicPulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.25);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
   }
 }

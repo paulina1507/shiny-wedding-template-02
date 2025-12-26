@@ -51,11 +51,11 @@
   "location": {
     "title": "Nuestra celebración",
     "subtitle": "Fecha y ubicación",
-    "dateText": "20 · Diciembre · 2024<br><span>Monclova, Coah.</span>",
+    "dateText": "20 · Diciembre · 2026<br><span>Monclova, Coah.</span>",
     "places": [
       {
         "title": "Ceremonia",
-        "time": "17:00 Hrs.",
+        "time": "18:00 Hrs.",
         "image": "assets/img/ceremonia.png",
         "place": "Jardín del Lienzo Charro de la Villa",
         "address": "Jardín SN, Guadalupe, 25750<br>Monclova, Coah.",
@@ -63,7 +63,7 @@
       },
       {
         "title": "Recepción",
-        "time": "19:00 Hrs.",
+        "time": "20:30 Hrs.",
         "image": "assets/img/recepcion.png",
         "place": "Aurum Eventos",
         "address": "Cuauhtémoc 1400, Cd Deportiva<br>Monclova, Coah.",
@@ -167,7 +167,7 @@
     "tableValue": "Mesa 8"
   },
 
-  "note": "Agradecemos confirmar antes del <strong>15 de noviembre de 2026</strong>.",
+  "note": "Agradecemos confirmar antes del <strong>20 de diciembre de 2026</strong>.",
   "success": "¡Gracias por confirmar! Nos encantará compartir este día contigo."
 },
 
