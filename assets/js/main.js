@@ -237,4 +237,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  /* =====================================================
+   NAV MOBILE TOGGLE (REAL)
+   ===================================================== */
+
+  const menuToggle = document.getElementById("menuToggle");
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      document.body.classList.toggle("menu-open");
+    });
+
+    document.querySelectorAll("#navLeft a, #navRight a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.body.classList.remove("menu-open");
+      });
+    });
+  }
 });
