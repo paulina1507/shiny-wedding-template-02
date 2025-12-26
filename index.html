@@ -6,12 +6,8 @@
 
     <title id="pageTitle"></title>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/variables.css" />
@@ -183,59 +179,71 @@
     </section>
 
     <!-- ================= RSVP ================= -->
-<section id="rsvp" class="section section--framed">
-  <div class="frame-box">
-    <div class="rsvp-content text-center">
+    <section id="rsvp" class="section section--framed">
+      <div class="frame-box">
+        <div class="rsvp-content text-center">
+          <!-- TÍTULO -->
+          <h2 class="section-title reveal-title" id="rsvpTitle"></h2>
+          <div class="divider"></div>
 
-      <h2 class="section-title reveal-title" id="rsvpTitle"></h2>
-      <div class="divider"></div>
+          <!-- INTRO -->
+          <p class="rsvp-intro reveal-left" id="rsvpIntro"></p>
 
-      <p class="rsvp-intro reveal-left" id="rsvpIntro"></p>
+          <!-- FORMULARIO -->
+          <form class="rsvp-form" id="rsvpForm">
+            <input type="text" id="rsvpName" required />
 
-      <form class="rsvp-form" id="rsvpForm">
-        <input
-          type="text"
-          id="rsvpName"
-          required
-        />
+            <select id="rsvpAttendance" required></select>
 
-        <select
-          id="rsvpAttendance"
-          required
-        ></select>
+            <textarea id="rsvpMessage"></textarea>
 
-        <textarea
-          id="rsvpMessage"
-        ></textarea>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="rsvpButton"
+            ></button>
+          </form>
 
-        <button
-          type="submit"
-          class="btn btn-primary"
-          id="rsvpButton"
-        ></button>
-      </form>
+          <!-- =================
+           TICKET DIGITAL
+           ================= -->
+          <div class="rsvp-extra hidden rsvp-ticket" id="rsvpExtra">
+            <!-- HEADER -->
+            <div class="ticket-header">
+              <span class="ticket-title">Invitación confirmada</span>
+              <span class="ticket-name" id="rsvpGuestName"></span>
+            </div>
 
-      <!-- INFO ASIGNADA (SOLO DESPUÉS DE CONFIRMAR) -->
-      <div class="rsvp-extra hidden" id="rsvpExtra">
-        <p class="rsvp-info">
-          <strong>Pases asignados:</strong>
-          <span id="rsvpPassesText"></span>
-        </p>
+            <!-- CUERPO -->
+            <div class="ticket-body">
+              <div class="rsvp-info">
+                <strong>Pases</strong>
+                <span id="rsvpPassesText"></span>
+              </div>
 
-        <p class="rsvp-info">
-          <strong>Mesa asignada:</strong>
-          <span id="rsvpTableText"></span>
-        </p>
+              <div class="rsvp-info">
+                <strong>Mesa</strong>
+                <span id="rsvpTableText"></span>
+              </div>
+            </div>
+
+            <!-- QR -->
+            <div class="ticket-qr">
+              <canvas id="rsvpQr"></canvas>
+              <span class="qr-label">
+                Presenta este código el día del evento
+              </span>
+            </div>
+          </div>
+
+          <!-- NOTA -->
+          <p class="rsvp-note" id="rsvpNote"></p>
+
+          <!-- MENSAJE DE ÉXITO -->
+          <div class="rsvp-success hidden" id="rsvpSuccess"></div>
+        </div>
       </div>
-
-      <p class="rsvp-note" id="rsvpNote"></p>
-
-      <div class="rsvp-success hidden" id="rsvpSuccess"></div>
-
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">

@@ -64,9 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const presentationText = document.getElementById("presentationText");
       const presentationIcon = document.getElementById("presentationIcon");
 
-      if (presentationTitle) {
+      if (presentationTitle)
         presentationTitle.innerHTML = data.presentation?.title || "";
-      }
 
       if (presentationParents && data.presentation?.parents) {
         presentationParents.innerHTML = "";
@@ -78,13 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      if (presentationText) {
+      if (presentationText)
         presentationText.innerHTML = data.presentation?.text || "";
-      }
 
-      if (presentationIcon && data.presentation?.icon) {
+      if (presentationIcon && data.presentation?.icon)
         presentationIcon.src = data.presentation.icon;
-      }
 
       /* =====================================================
          LOCATION
@@ -223,8 +220,9 @@ document.addEventListener("DOMContentLoaded", () => {
           galleryGrid.innerHTML += `<img src="${img}">`;
         });
       }
+
       /* =====================================================
-   RSVP (CONFIRMACIÓN + DATOS ASIGNADOS)
+   RSVP (TICKET DIGITAL + QR)
    ===================================================== */
 
       const rsvpTitle = document.getElementById("rsvpTitle");
@@ -232,17 +230,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const rsvpNote = document.getElementById("rsvpNote");
       const rsvpSuccess = document.getElementById("rsvpSuccess");
 
+      const rsvpForm = document.getElementById("rsvpForm");
       const rsvpName = document.getElementById("rsvpName");
       const rsvpAttendance = document.getElementById("rsvpAttendance");
       const rsvpMessage = document.getElementById("rsvpMessage");
       const rsvpButton = document.getElementById("rsvpButton");
 
-      /* Textos asignados */
       const rsvpExtra = document.getElementById("rsvpExtra");
       const rsvpPassesText = document.getElementById("rsvpPassesText");
       const rsvpTableText = document.getElementById("rsvpTableText");
+      const rsvpGuestName = document.getElementById("rsvpGuestName");
+      const rsvpQrCanvas = document.getElementById("rsvpQr");
 
-      /* Texto base */
+      /* ===== Textos base ===== */
+
       if (rsvpTitle) rsvpTitle.innerHTML = data.rsvp?.title || "";
       if (rsvpIntro) rsvpIntro.innerHTML = data.rsvp?.intro || "";
       if (rsvpNote) rsvpNote.innerHTML = data.rsvp?.note || "";
@@ -256,101 +257,70 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rsvpButton)
         rsvpButton.innerHTML = data.rsvp?.fields?.buttonText || "";
 
-      /* Select asistencia */
+      /* ===== Select asistencia ===== */
+
       if (rsvpAttendance) {
-        rsvpAttendance.innerHTML = `<option value="">${
-          data.rsvp?.fields?.attendancePlaceholder || ""
-        }</option>`;
+        rsvpAttendance.innerHTML = `
+    <option value="">
+      ${data.rsvp?.fields?.attendancePlaceholder || ""}
+    </option>
+  `;
 
         data.rsvp?.fields?.attendanceOptions?.forEach((opt) => {
           rsvpAttendance.innerHTML += `<option>${opt}</option>`;
         });
       }
 
-      /* Envío */
-      const rsvpForm = document.getElementById("rsvpForm");
+      /* ===== Submit RSVP ===== */
 
       if (rsvpForm) {
         rsvpForm.addEventListener("submit", (e) => {
           e.preventDefault();
 
           const asistencia = rsvpAttendance.value.toLowerCase();
+          const guestName = rsvpName.value.trim();
 
+          /* Nombre del invitado */
+          if (rsvpGuestName) {
+            rsvpGuestName.textContent = guestName;
+          }
+
+          /* Mostrar datos solo si asiste */
           if (asistencia.includes("sí")) {
             if (rsvpPassesText)
               rsvpPassesText.textContent =
-                data.rsvp?.fields?.assignedPasses || "-";
+                data.rsvp?.assigned?.passesValue || "-";
 
             if (rsvpTableText)
               rsvpTableText.textContent =
-                data.rsvp?.fields?.assignedTable || "-";
+                data.rsvp?.assigned?.tableValue || "-";
 
             rsvpExtra.classList.remove("hidden");
+
+            /* ===== QR ===== */
+            if (window.QRious && rsvpQrCanvas) {
+              const qrData = JSON.stringify({
+                guest: guestName,
+                passes: data.rsvp?.assigned?.passesValue,
+                table: data.rsvp?.assigned?.tableValue,
+              });
+
+              new QRious({
+                element: rsvpQrCanvas,
+                value: qrData,
+                size: 160,
+                foreground: "#5b4b8a",
+                background: "#ffffff",
+              });
+            }
           }
 
-          rsvpSuccess.innerHTML = `
-      ${data.rsvp?.success || ""}
-    `;
-
+          /* Mensaje final */
+          rsvpSuccess.innerHTML = data.rsvp?.success || "";
           rsvpSuccess.classList.remove("hidden");
+
+          /* Ocultar formulario */
           rsvpForm.classList.add("hidden");
-        });
-      }
-
-      /* =====================================================
-         🎵 MUSIC PLAYER
-         ===================================================== */
-
-      const music = document.getElementById("bgMusic");
-      const toggle = document.getElementById("musicToggle");
-      const icon = document.getElementById("musicIcon");
-      const seal = document.getElementById("sealButton");
-
-      if (music && toggle && icon && seal && data.music?.src) {
-        music.src = data.music.src;
-        music.volume = 0;
-
-        const TARGET_VOLUME = data.music.volume ?? 0.6;
-        const STEP = 0.02;
-        let fadeInterval = null;
-        let isPlaying = false;
-
-        const fadeIn = () => {
-          clearInterval(fadeInterval);
-          fadeInterval = setInterval(() => {
-            if (music.volume < TARGET_VOLUME) {
-              music.volume = Math.min(TARGET_VOLUME, music.volume + STEP);
-            } else {
-              clearInterval(fadeInterval);
-            }
-          }, 60);
-        };
-
-        const playMusic = () => {
-          music
-            .play()
-            .then(() => {
-              isPlaying = true;
-              icon.src = "assets/img/pause.svg";
-              toggle.classList.add("playing");
-              fadeIn();
-            })
-            .catch(() => {});
-        };
-
-        const pauseMusic = () => {
-          music.pause();
-          isPlaying = false;
-          icon.src = "assets/img/play.svg";
-          toggle.classList.remove("playing");
-        };
-
-        seal.addEventListener("click", () => {
-          if (!isPlaying) playMusic();
-        });
-
-        toggle.addEventListener("click", () => {
-          isPlaying ? pauseMusic() : playMusic();
         });
       }
 
