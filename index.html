@@ -193,17 +193,35 @@
           <!-- INTRO -->
           <p class="rsvp-intro reveal-left" id="rsvpIntro"></p>
 
-          <!-- FORMULARIO -->
+          <!-- =================
+           FORMULARIO RSVP
+           ================= -->
           <form class="rsvp-form" id="rsvpForm">
-            <input type="text" id="rsvpName" required />
+            <!-- NOMBRE (PRELLENADO DESDE PANEL) -->
+            <div class="rsvp-field">
+              <label>Invitado</label>
+              <input type="text" id="rsvpName" readonly />
+              <small class="rsvp-helper">
+                Este nombre fue asignado por los anfitriones
+              </small>
+            </div>
 
-            <select id="rsvpAttendance" required></select>
+            <!-- ASISTENCIA -->
+            <div class="rsvp-field">
+              <label>¿Podrás acompañarnos?</label>
+              <select id="rsvpAttendance" required></select>
+            </div>
 
-            <textarea id="rsvpMessage"></textarea>
+            <!-- MENSAJE -->
+            <div class="rsvp-field optional">
+              <label>Mensaje para los novios (opcional)</label>
+              <textarea id="rsvpMessage"></textarea>
+            </div>
 
+            <!-- BOTÓN -->
             <button
               type="submit"
-              class="btn btn-primary"
+              class="btn btn-primary rsvp-submit"
               id="rsvpButton"
             ></button>
           </form>
@@ -214,26 +232,33 @@
           <div class="rsvp-extra hidden rsvp-ticket" id="rsvpExtra">
             <!-- HEADER -->
             <div class="ticket-header">
-              <span class="ticket-title">Invitación confirmada</span>
+              <span class="ticket-status">Acceso confirmado</span>
               <span class="ticket-name" id="rsvpGuestName"></span>
             </div>
 
-            <!-- CUERPO -->
-            <div class="ticket-body">
-              <div class="rsvp-info">
-                <strong>Pases</strong>
-                <span id="rsvpPassesText"></span>
+            <!-- INFO PASES / MESA -->
+            <div class="ticket-body ticket-badges">
+              <div class="ticket-badge" id="rsvpPassesBlock">
+                <span class="badge-icon">🎫</span>
+                <span class="badge-label">Pases</span>
+                <span class="badge-value" id="rsvpPassesText"></span>
               </div>
 
-              <div class="rsvp-info">
-                <strong>Mesa</strong>
-                <span id="rsvpTableText"></span>
+              <div class="ticket-badge" id="rsvpTableBlock">
+                <span class="badge-icon">🪑</span>
+                <span class="badge-label">Mesa</span>
+                <span class="badge-value" id="rsvpTableText"></span>
               </div>
             </div>
 
             <!-- QR -->
             <div class="ticket-qr">
-              <canvas id="rsvpQr"></canvas>
+              <div class="qr-title">Tu acceso digital</div>
+
+              <div class="qr-wrapper">
+                <canvas id="rsvpQr"></canvas>
+              </div>
+
               <span class="qr-label">
                 Presenta este código el día del evento
               </span>
@@ -243,7 +268,7 @@
           <!-- NOTA -->
           <p class="rsvp-note" id="rsvpNote"></p>
 
-          <!-- MENSAJE DE ÉXITO -->
+          <!-- MENSAJE FINAL -->
           <div class="rsvp-success hidden" id="rsvpSuccess"></div>
         </div>
       </div>

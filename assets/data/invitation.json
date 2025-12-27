@@ -146,30 +146,45 @@
   },
 
   "rsvp": {
-  "title": "Asistencia",
-  "intro": "Para nosotros será un honor contar con tu presencia en este día tan especial.",
+    "enabled": true,
 
-  "fields": {
-    "namePlaceholder": "Nombre completo",
-    "attendancePlaceholder": "¿Asistirás a nuestra celebración?",
-    "attendanceOptions": [
-      "Sí asistiré",
-      "No podré asistir"
-    ],
-    "messagePlaceholder": "Mensaje para los novios",
-    "buttonText": "Confirmar asistencia"
+    "title": "Asistencia",
+    "intro": "Para nosotros será un honor contar con tu presencia en este día tan especial.",
+
+    "fields": {
+      "attendancePlaceholder": "¿Asistirás a nuestra celebración?",
+      "attendanceOptions": ["Sí asistiré", "No podré asistir"],
+      "messagePlaceholder": "Mensaje para los novios",
+      "buttonText": "Confirmar asistencia"
+    },
+
+    "note": "Agradecemos confirmar antes del <strong>20 de diciembre de 2026</strong>.",
+
+    "success": {
+      "title": "¡Gracias por confirmar!",
+      "text": "Nos encantará compartir este día contigo."
+    },
+    "decline": {
+      "title": "Gracias por avisarnos",
+      "text": "Lamentaremos no contar con tu presencia, pero agradecemos mucho que nos lo hayas hecho saber."
+    }
   },
 
-  "assigned": {
-    "passesLabel": "Pases asignados",
-    "passesValue": "2",
-    "tableLabel": "Mesa asignada",
-    "tableValue": "Mesa 8"
+  "features": {
+    "pases": true,
+    "mesa": true,
+    "qr": true
   },
 
-  "note": "Agradecemos confirmar antes del <strong>20 de diciembre de 2026</strong>.",
-  "success": "¡Gracias por confirmar! Nos encantará compartir este día contigo."
-},
+  "invitado": {
+    "id": "001",
+    "nombre": "Paulina Romero",
+    "pases": 2,
+    "mesa": {
+      "numero": 8,
+      "label": "Mesa asignada"
+    }
+  },
 
   "footer": {
     "names": "David & Lizbeth",

@@ -234,8 +234,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       /* =====================================================
-         RSVP (FORM + QR)
-         ===================================================== */
+   RSVP (FORM + TICKET + QR)
+   ===================================================== */
 
       const rsvpTitle = document.getElementById("rsvpTitle");
       const rsvpIntro = document.getElementById("rsvpIntro");
@@ -249,74 +249,143 @@ document.addEventListener("DOMContentLoaded", () => {
       const rsvpButton = document.getElementById("rsvpButton");
 
       const rsvpExtra = document.getElementById("rsvpExtra");
-      const rsvpPassesText = document.getElementById("rsvpPassesText");
-      const rsvpTableText = document.getElementById("rsvpTableText");
       const rsvpGuestName = document.getElementById("rsvpGuestName");
+
+      const rsvpPassesBlock = document.getElementById("rsvpPassesBlock");
+      const rsvpPassesText = document.getElementById("rsvpPassesText");
+
+      const rsvpTableBlock = document.getElementById("rsvpTableBlock");
+      const rsvpTableText = document.getElementById("rsvpTableText");
+
       const rsvpQrCanvas = document.getElementById("rsvpQr");
+
+      /* ================= HELPERS ================= */
+
+      const hasFeature = (key) => data.features?.[key] === true;
+
+      /* ================= TEXTOS RSVP ================= */
 
       if (rsvpTitle) rsvpTitle.innerHTML = data.rsvp?.title || "";
       if (rsvpIntro) rsvpIntro.innerHTML = data.rsvp?.intro || "";
       if (rsvpNote) rsvpNote.innerHTML = data.rsvp?.note || "";
 
-      if (rsvpName)
-        rsvpName.placeholder = data.rsvp?.fields?.namePlaceholder || "";
-
       if (rsvpMessage)
         rsvpMessage.placeholder = data.rsvp?.fields?.messagePlaceholder || "";
 
       if (rsvpButton)
-        rsvpButton.innerHTML = data.rsvp?.fields?.buttonText || "";
+        rsvpButton.innerHTML = data.rsvp?.fields?.buttonText || "Confirmar";
+
+      /* ================= INVITADO (PREFILL) ================= */
+
+      if (rsvpName && data.invitado?.nombre) {
+        rsvpName.value = data.invitado.nombre;
+      }
+
+      /* ================= ASISTENCIA ================= */
 
       if (rsvpAttendance) {
         rsvpAttendance.innerHTML = `
-          <option value="">
-            ${data.rsvp?.fields?.attendancePlaceholder || ""}
-          </option>
-        `;
+    <option value="">
+      ${data.rsvp?.fields?.attendancePlaceholder || ""}
+    </option>
+  `;
+
         data.rsvp?.fields?.attendanceOptions?.forEach((opt) => {
-          rsvpAttendance.innerHTML += `<option>${opt}</option>`;
+          rsvpAttendance.innerHTML += `<option value="${opt}">${opt}</option>`;
         });
       }
+
+      /* ================= SUBMIT RSVP ================= */
 
       if (rsvpForm) {
         rsvpForm.addEventListener("submit", (e) => {
           e.preventDefault();
 
           const asistencia = rsvpAttendance.value.toLowerCase();
-          const guestName = rsvpName.value.trim();
+          const guestName = rsvpName?.value?.trim() || "";
 
-          if (rsvpGuestName) rsvpGuestName.textContent = guestName;
+          /* ===== LIMPIEZA GENERAL ===== */
+          rsvpExtra?.classList.add("hidden");
+          rsvpPassesBlock?.classList.add("hidden");
+          rsvpTableBlock?.classList.add("hidden");
+          rsvpQrCanvas?.closest(".ticket-qr")?.classList.add("hidden");
 
+          rsvpIntro?.classList.remove("hidden");
+          rsvpNote?.classList.remove("hidden");
+
+          /* ===== SI ASISTE ===== */
           if (asistencia.includes("sí")) {
-            if (rsvpPassesText)
-              rsvpPassesText.textContent =
-                data.rsvp?.assigned?.passesValue || "-";
-            if (rsvpTableText)
-              rsvpTableText.textContent =
-                data.rsvp?.assigned?.tableValue || "-";
+            if (rsvpGuestName) {
+              rsvpGuestName.textContent = guestName;
+            }
 
-            rsvpExtra.classList.remove("hidden");
+            /* Pases */
+            if (hasFeature("pases") && data.invitado?.pases) {
+              rsvpPassesText.textContent = data.invitado.pases;
+              rsvpPassesBlock?.classList.remove("hidden");
+            }
 
-            if (window.QRious && rsvpQrCanvas) {
-              const qrData = JSON.stringify({
-                guest: guestName,
-                passes: data.rsvp?.assigned?.passesValue,
-                table: data.rsvp?.assigned?.tableValue,
+            /* Mesa */
+            if (hasFeature("mesa") && data.invitado?.mesa?.numero) {
+              rsvpTableText.textContent = data.invitado.mesa.numero;
+              rsvpTableBlock?.classList.remove("hidden");
+            }
+
+            /* QR */
+            if (hasFeature("qr") && window.QRious && rsvpQrCanvas) {
+              const qrPayload = JSON.stringify({
+                invitado_id: data.invitado?.id || null,
+                nombre: guestName,
+                pases: hasFeature("pases") ? data.invitado?.pases : null,
+                mesa: hasFeature("mesa") ? data.invitado?.mesa?.numero : null,
               });
 
               new QRious({
                 element: rsvpQrCanvas,
-                value: qrData,
+                value: qrPayload,
                 size: 160,
                 foreground: "#5b4b8a",
                 background: "#ffffff",
               });
+
+              rsvpQrCanvas.closest(".ticket-qr")?.classList.remove("hidden");
             }
+
+            rsvpExtra?.classList.remove("hidden");
           }
 
-          rsvpSuccess.innerHTML = data.rsvp?.success || "";
-          rsvpSuccess.classList.remove("hidden");
+          /* ===== NO ASISTE ===== */
+          if (asistencia.includes("no")) {
+            rsvpIntro?.classList.add("hidden");
+            rsvpNote?.classList.add("hidden");
+          }
+
+          /* ===== MENSAJE FINAL ===== */
+          if (rsvpSuccess) {
+            if (asistencia.includes("sí") && data.rsvp?.success) {
+              rsvpSuccess.innerHTML = `
+          <strong>${data.rsvp.success.title}</strong><br>
+          ${data.rsvp.success.text}
+        `;
+            }
+
+            if (asistencia.includes("no") && data.rsvp?.decline) {
+              rsvpSuccess.innerHTML = `
+          <strong>${data.rsvp.decline.title}</strong><br>
+          ${data.rsvp.decline.text}
+        `;
+            }
+
+            rsvpSuccess.classList.remove("hidden");
+          }
+
+          /* ===== OCULTAR FORM ===== */
           rsvpForm.classList.add("hidden");
+
+          /* Scroll suave SOLO si hay ticket */
+          if (asistencia.includes("sí")) {
+            rsvpExtra.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
         });
       }
 

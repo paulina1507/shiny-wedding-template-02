@@ -140,27 +140,26 @@
 /* ===============================
    HEADER DEL TICKET
 ================================ */
-
-.ticket-header{
+.ticket-header {
   text-align: center;
-  position: relative;
+  margin-bottom: 1.8rem;
 }
 
-.ticket-title{
-  font-size: 0.6rem;
-  letter-spacing: .32em;
+.ticket-status {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #b5a8e3;
+  color: var(--color-muted);
+  margin-bottom: 0.4rem;
 }
 
-.ticket-name{
-  margin-top: 14px;
-  font-family: var(--font-title);
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: #4b3b84;
+.ticket-name {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-main);
 }
-
 
 /* ===============================
    CUERPO DEL TICKET
@@ -220,34 +219,109 @@
   content: "🪑 ";
 }
 
+.ticket-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ticket-badge {
+  background: linear-gradient(135deg, #f7f5ff, #ffffff);
+  border-radius: 14px;
+  padding: 0.8rem 1.2rem;
+  min-width: 110px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(90, 80, 160, 0.12);
+}
+
+.badge-icon {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.badge-label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.badge-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
 /* ===============================
    QR
 ================================ */
+
+
 .ticket-qr{
-  margin-top: 8px;
+  margin-top: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
-.ticket-qr canvas{
-  width: 150px;
-  height: 150px;
-  padding: 14px;
-  background: #fff;
-  border-radius: 24px;
+/* Contenedor elegante */
+.qr-wrapper{
+  padding: 18px;
+  border-radius: 28px;
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f4f1ff
+  );
 
   box-shadow:
-    0 20px 40px rgba(120,90,160,0.25),
-    inset 0 0 0 1px rgba(123,94,203,0.15);
+    0 25px 55px rgba(120,90,160,0.28),
+    inset 0 0 0 1px rgba(123,94,203,0.18);
 }
 
+/* QR en sí */
+.qr-wrapper canvas{
+  width: 150px;
+  height: 150px;
+  display: block;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+/* Texto */
 .qr-label{
   font-size: 0.65rem;
-  letter-spacing: .08em;
-  color: #a79ad8;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #9b8fd6;
 }
+
+/* Header más aire */
+.ticket-header{
+  margin-bottom: 6px;
+}
+
+/* Cuerpo ligeramente más compacto */
+.ticket-body{
+  margin-top: 6px;
+}
+
+/* QR protagonista */
+.ticket-qr{
+  margin-top: 24px;
+}
+
+/* Nota final más discreta */
+.rsvp-note{
+  margin-top: 28px;
+  opacity: 0.75;
+}
+
 
 
 /* ===============================
@@ -309,4 +383,50 @@
     width: 115px;
     height: 115px;
   }
+}
+
+/* =========================
+   RSVP TICKET ANIMATION
+   ========================= */
+
+.rsvp-ticket {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rsvp-ticket.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* QR con delay */
+.rsvp-ticket .ticket-qr {
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.4s ease 0.15s,
+    transform 0.4s ease 0.15s;
+}
+
+.rsvp-ticket.show .ticket-qr {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hidden {
+  display: none;
+}
+
+.rsvp-ticket {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.rsvp-ticket.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
